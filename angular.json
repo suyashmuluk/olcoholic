@@ -28,9 +28,12 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -124,6 +127,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "olcoholic"
+    }
+  },
+  "defaultProject": "olcoholic",
+  "cli": {
+    "analytics": false
+  }
 }
