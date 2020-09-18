@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from '../shared/customer.service';
+import { GetproductsService } from '../shared/getproducts.service';
+import Product from '../models/product';
 
 @Component({
   selector: 'app-homepage',
@@ -8,9 +9,29 @@ import { CustomerService } from '../shared/customer.service';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(private customerService: CustomerService) { }
+  products: Product[];
+  sidebarListItems = false;
+  constructor(private getProduct: GetproductsService) { }
 
   ngOnInit() {
+    this.getproductList();
   }
 
+  getproductList() {
+    this.getProduct.getProducts().subscribe((products: Product[]) => {
+      this.products = products;
+    });
+  }
+
+  toggleSidebar(value) {
+    if (value === 'open') {
+      document.getElementById('sidebar').classList.add('toggleSidebar');
+      setTimeout(() => {
+        this.sidebarListItems = true;
+      }, 400);
+    } else if (value === 'close') {
+      this.sidebarListItems = false;
+      document.getElementById('sidebar').classList.remove('toggleSidebar');
+    }
+  }
 }

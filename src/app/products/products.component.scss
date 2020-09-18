@@ -11,84 +11,48 @@
   }
 }
 
-.landing_page {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("../../assets/olcoholic_images/landing_page.jpg");
-  height: calc(100vh - 80px);
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  align-items: center;
+.sidebar {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  bottom: 0;
+  width: 80px;
+  background-color: #fff;
+  box-shadow: 1px 3px 5px #cecece;
+  color: #c70039;
+  z-index: 2;
+  transition: all 0.2s ease-in-out;
 
-  @include for_size(ipad) {
-    background-position: center;
-  }
+  &__profile {
+    display: flex;
+    align-items: center;
+    padding: 40px 14px 0;
 
-  @include for_size(phone) {
-    background-position: center;
-  }
-
-  &__title_container {
-    padding: 0 80px;
-
-    @include for_size(ipad) {
-      padding: 0 32px;
-    }
-
-    @include for_size(phone) {
-      padding: 0 20px;
-    }
-  }
-
-  &__title {
-    color: #fff;
-    font-size: 3rem;
-
-    @include for_size(phone) {
+    &_icon {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      box-shadow: 1px 3px 8px #cecece;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       font-size: 2rem;
+      font-weight: bold;
+    }
+
+    &_name {
+      margin-left: 0.5rem;
+      font-size: 1.5rem;
     }
   }
+}
 
-  &__btn {
-    border: 0;
-    border-radius: 5px;
-    background-color: #c70039;
-    color: #fff;
-    font-weight: 600;
-    font-size: 18px;
-    padding: 8px 20px;
-    margin-top: 1rem;
-    box-shadow: 0px 0px 3px #c70039;
-    transition: all 0.3s ease-in;
-
-    &:hover {
-      background-color: #b30033;
-      box-shadow: 0px 0px 5px #c70039;
-    }
-
-    &:focus {
-      outline: none;
-    }
-  }
+.toggleSidebar{
+    width: 200px;
 }
 
 .product_section {
-  &_btn_container {
-    text-align: center;
-  }
-
-  &-view_all_btn {
-    @extend .landing_page__btn;
-    box-shadow: 1px 1px 3px #a2a2a2;
-
-    &:hover {
-      box-shadow: 1px 1px 5px #8f8f8f;
-    }
-  }
-}
-
-.body_container {
-  @extend .landing_page__title_container;
+  padding-left: 100px;
 }
 
 .product_cards_container {
@@ -170,17 +134,24 @@
     }
 
     &__btn {
-      @extend .landing_page__btn;
-      width: 100%;
-      margin-top: 0.5rem;
-      padding: 8px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 90%;
+      border: 0;
+      border-radius: 5px;
+      background-color: #c70039;
+      color: #fff;
+      font-weight: 600;
+      font-size: 18px;
+      padding: 8px 20px;
+      margin-top: 1rem;
       box-shadow: 1px 1px 3px #a2a2a2;
+      transition: all 0.3s ease-in;
 
       &:hover {
         box-shadow: 1px 1px 5px #8f8f8f;
+      }
+
+      &:focus {
+        outline: none;
       }
     }
 

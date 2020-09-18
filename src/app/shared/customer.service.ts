@@ -1,17 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Customer } from '../shared/customer.model';
-import { HttpClient } from '@angular/common/http';
-// import { observable } from 'rxjs/observable';
-// import 'rxjs/add/operator/map';
-// import 'rxjs/add/operator/toPromise';
+import { DbconnectService } from '../shared/dbconnect.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
 
-  selectedCustomer: Customer;
-  customers: Customer[];
+  constructor(private dbConnect: DbconnectService) { }
 
-  constructor() { }
+  getCustomers() {
+    return this.dbConnect.get('customers');
+  }
+
+  addCustomer(name: string, email: string, password: string) {
+    return this.dbConnect.post('customers', { name, email, password });
+  }
+
+  deleteCustomer(id: string) {
+    return this.dbConnect.delete(`customers/${id}`);
+  }
+
+  updateCustomerInfo(id: string, name: string, email: string, password: string) {
+    return this.dbConnect.patch(`customers/${id}`, { name, email, password });
+  }
 }

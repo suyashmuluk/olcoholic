@@ -1,6 +1,6 @@
-export class Customer {
+export default class Customer {
     _id: string;
-    name: string;
+    name: String;
     email: string;
     password: string;
 }

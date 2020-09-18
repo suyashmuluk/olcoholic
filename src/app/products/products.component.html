@@ -1,0 +1,91 @@
+<app-navbar></app-navbar>
+<div id="sidebar" class="sidebar">
+    <div class="sidebar_toggle">
+        <span class="material-icons" *ngIf="!sidebarListItems">arrow_forward</span>
+        <span class="material-icons" *ngIf="sidebarListItems">close</span>
+    </div>
+    <div class="sidebar__profile">
+        <div class="sidebar__profile_icon">
+            S
+        </div>
+        <div class="sidebar__profile_name" *ngIf="sidebarListItems">
+            Suyash
+        </div>
+    </div>
+
+    <div class="sidebar_list">
+        <div class="sidebar_list_item">
+            <span class="material-icons sidebar_list_item-icon">local_grocery_store</span>
+            <span class="sidebar_list_item_text">Beer</span>
+        </div>
+
+        <div class="sidebar_list_item">
+            <span class="material-icons sidebar_list_item-icon">local_grocery_store</span>
+            <span class="sidebar_list_item_text">Wine</span>
+        </div>
+
+        <div class="sidebar_list_item">
+            <span class="material-icons sidebar_list_item-icon">local_grocery_store</span>
+            <span class="sidebar_list_item_text">Vodka</span>
+        </div>
+
+        <div class="sidebar_list_item">
+            <span class="material-icons sidebar_list_item-icon">local_grocery_store</span>
+            <span class="sidebar_list_item_text">Whiskey</span>
+        </div>
+
+        <div class="sidebar_list_item">
+            <span class="material-icons sidebar_list_item-icon">local_grocery_store</span>
+            <span class="sidebar_list_item_text">Rum</span>
+        </div>
+
+        <div class="sidebar_list_item">
+            <span class="material-icons sidebar_list_item-icon">local_grocery_store</span>
+            <span class="sidebar_list_item_text">My Wishlist</span>
+        </div>
+
+        <div class="sidebar_list_item">
+            <span class="material-icons sidebar_list_item-icon">local_grocery_store</span>
+            <span class="sidebar_list_item_text">My Cart</span>
+        </div>
+
+        <div class="sidebar_list_item">
+            <span class="material-icons sidebar_list_item-icon">local_grocery_store</span>
+            <span class="sidebar_list_item_text">Log out</span>
+        </div>
+    </div>
+</div>
+
+<div class="product_section">
+    <div class="product_cards_container">
+        <div class="product_card" *ngFor="let product of products">
+            <div class="product_card__wishlist">
+                <span class="material-icons product_card__wishlist-icon">favorite</span>
+            </div>
+            <div class="product_card__share">
+                <span class="material-icons product_card__share-icon">share</span>
+            </div>
+            <div class="product_card__image"></div>
+            <div class="product_card__desc">
+                <div class="product_card__title">{{product.name}}</div>
+                <div class="product_card__info">
+                    {{product.description}}
+                </div>
+                <div class="product_card__price">
+                    <span class="product_card__price_text">Rs. </span>
+                    <span class="product_card__price_info">{{product.price}}</span>
+                    <span>/-</span>
+                </div>
+                <div class="text-center">
+                    <button class="product_card__btn">
+                        <span>Buy</span>
+                    </button>
+                </div>
+                <div class="product_card__link">
+                    <span class="material-icons" style="margin-right: .5rem">local_grocery_store</span>
+                    <span class="product_card__link_text">Add to Cart</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

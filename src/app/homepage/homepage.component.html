@@ -4,28 +4,45 @@
     <div class="landing_page__title_container">
         <div class="landing_page__title">Yes,</div>
         <div class="landing_page__title">We serve liquor online...</div>
-        <button class="landing_page__btn">Get Some Liquor</button>
+        <button class="landing_page__btn" routerLink="/products">Get Some Liquor</button>
     </div>
 </div>
 
-<div class="product_cards_container">
-    <div class="product_card">
-        <div class="product_card__wishlist" matTooltip="Add to wishlist">
-            <span class="material-icons">favorite</span>
+<div class="body_container">
+    <div class="product_section">
+        <div class="product_cards_container">
+            <div class="product_card" *ngFor="let product of products">
+                <div class="product_card__wishlist">
+                    <span class="material-icons product_card__wishlist-icon">favorite</span>
+                </div>
+                <div class="product_card__share">
+                    <span class="material-icons product_card__share-icon">share</span>
+                </div>
+                <div class="product_card__image"></div>
+                <div class="product_card__desc">
+                    <div class="product_card__title">{{product.name}}</div>
+                    <div class="product_card__info">
+                        {{product.description}}
+                    </div>
+                    <div class="product_card__price">
+                        <span class="product_card__price_text">Rs. </span>
+                        <span class="product_card__price_info">{{product.price}}</span>
+                        <span>/-</span>
+                    </div>
+                    <button class="product_card__btn">
+                        <span>Buy</span>
+                    </button>
+                    <div class="product_card__link">
+                        <span class="material-icons" style="margin-right: .5rem">local_grocery_store</span>
+                        <span class="product_card__link_text">Add to Cart</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="product_card__image"></div>
-        <div class="product_card__desc">
-            <div class="product_card__title">Budweiser</div>
-            <div class="product_card__info">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus, vel.
-            </div>
-            <div class="product_card__price">
-                <span class="product_card__price_text">Rs. </span>
-                <span class="product_card__price_info">550/-</span>
-            </div>
-            <button class="product_card__btn">
-                <span class="material-icons" style="margin-right: .5rem">local_grocery_store</span>
-                <span>Buy</span>
+
+        <div class="product_section_btn_container">
+            <button class="product_section-view_all_btn" routerLink="/products">
+                <span>View All</span>
             </button>
         </div>
     </div>
