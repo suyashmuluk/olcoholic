@@ -1,8 +1,10 @@
 <app-navbar></app-navbar>
 <div id="sidebar" class="sidebar">
-    <div class="sidebar_toggle">
-        <span class="material-icons" *ngIf="!sidebarListItems">arrow_forward</span>
-        <span class="material-icons" *ngIf="sidebarListItems">close</span>
+    <div class="sidebar__toggle">
+        <span class="material-icons sidebar__toggle_icon" (click)="toggleSidebar('open')"
+            *ngIf="!sidebarListItems">arrow_forward</span>
+        <span class="material-icons sidebar__toggle_icon" (click)="toggleSidebar('close')"
+            *ngIf="sidebarListItems">close</span>
     </div>
     <div class="sidebar__profile">
         <div class="sidebar__profile_icon">
@@ -15,48 +17,67 @@
 
     <div class="sidebar_list">
         <div class="sidebar_list_item">
-            <span class="material-icons sidebar_list_item-icon">local_grocery_store</span>
-            <span class="sidebar_list_item_text">Beer</span>
+            <i class="fas fa-beer sidebar_list_item-icon"></i>
+            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Beer</span>
+        </div>
+
+        <div class="sidebar_list_item">
+            <span class="material-icons sidebar_list_item-icon">wine_bar</span>
+            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Wine</span>
+        </div>
+
+        <div class="sidebar_list_item">
+            <i class="fas fa-wine-bottle sidebar_list_item-icon"></i>
+            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Vodka</span>
+        </div>
+
+        <div class="sidebar_list_item">
+            <i class="fas fa-glass-whiskey sidebar_list_item-icon"></i>
+            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Whiskey</span>
+        </div>
+
+        <div class="sidebar_list_item">
+            <i class="fas fa-cocktail sidebar_list_item-icon"></i>
+            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Rum</span>
+        </div>
+
+        <div class="sidebar_list_item">
+            <span class="material-icons sidebar_list_item-icon">favorite</span>
+            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Favorites</span>
         </div>
 
         <div class="sidebar_list_item">
             <span class="material-icons sidebar_list_item-icon">local_grocery_store</span>
-            <span class="sidebar_list_item_text">Wine</span>
+            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">My Cart</span>
         </div>
 
         <div class="sidebar_list_item">
-            <span class="material-icons sidebar_list_item-icon">local_grocery_store</span>
-            <span class="sidebar_list_item_text">Vodka</span>
-        </div>
-
-        <div class="sidebar_list_item">
-            <span class="material-icons sidebar_list_item-icon">local_grocery_store</span>
-            <span class="sidebar_list_item_text">Whiskey</span>
-        </div>
-
-        <div class="sidebar_list_item">
-            <span class="material-icons sidebar_list_item-icon">local_grocery_store</span>
-            <span class="sidebar_list_item_text">Rum</span>
-        </div>
-
-        <div class="sidebar_list_item">
-            <span class="material-icons sidebar_list_item-icon">local_grocery_store</span>
-            <span class="sidebar_list_item_text">My Wishlist</span>
-        </div>
-
-        <div class="sidebar_list_item">
-            <span class="material-icons sidebar_list_item-icon">local_grocery_store</span>
-            <span class="sidebar_list_item_text">My Cart</span>
-        </div>
-
-        <div class="sidebar_list_item">
-            <span class="material-icons sidebar_list_item-icon">local_grocery_store</span>
-            <span class="sidebar_list_item_text">Log out</span>
+            <span class="material-icons sidebar_list_item-icon">power_settings_new</span>
+            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Log out</span>
         </div>
     </div>
 </div>
 
 <div class="product_section">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-12">
+            <div class="filter_box">
+                <span class="filter_box_text">Filter</span>
+                <span class="material-icons filter_box-icon">filter_alt</span>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-12">
+            <div class="search_bar">
+                <form>
+                    <div class="form-group">
+                        <input style="width: 60%; margin-left: auto" class="form-control" type="search"
+                            placeholder="Search your product">
+                        <span class="material-icons search_bar-icon">search</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="product_cards_container">
         <div class="product_card" *ngFor="let product of products">
             <div class="product_card__wishlist">

@@ -1,1 +1,136 @@
-<p>register works!</p>
+<div class="register__box">
+    <div class="row">
+        <div class="col-lg-6 col-md-6-col-12 register__box_illustration_container">
+            <div class="register__box_img">
+                <img src="../../assets/olcoholic_images/register.png" alt="" style="width: 100%;">
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6-col-12">
+            <div class="register__box_form_section">
+                <div class="register__box_logo">
+                    Olcoholic
+                </div>
+                <div class="register__box_title">Register</div>
+                <div class="register__box_subtitle">
+                    Get ready to be high!!!
+                </div>
+                <div class="register__box_form">
+                    <form [formGroup]="registerForm">
+                        <div class="register__box_form_error" *ngIf="registerForm.errors">
+                            Please fill all input fields
+                        </div>
+                        <div class="personal-info" *ngIf="personalInfo">
+                            <div class="register__box_form_error" *ngIf="errorMessage">Please fill the following fields
+                            </div>
+                            <div class="form-group">
+                                <label class="register__box_form_label">Full Name</label>
+                                <input type="text" class="form-control" formControlName="full_name">
+                                <div class="register__box_form_error"
+                                    *ngIf="registerFormControls.full_name.touched && registerFormControls.full_name.invalid">
+                                    <div *ngIf="registerFormControls.full_name.errors.required">
+                                        Please enter Full Name
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="register__box_form_label">Date of Birth</label>
+                                <input type="date" class="form-control" formControlName="dob">
+                                <div class="register__box_form_error"
+                                    *ngIf="registerFormControls.dob.touched && registerFormControls.dob.invalid">
+                                    <div *ngIf="registerFormControls.dob.errors.required">
+                                        Please enter Date of Birth
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="register__box_form_btn_container" style="justify-content: flex-end">
+                                <button class="register__box_form_btn" (click)="nextStep('peronsal_info')">
+                                    <span>Next</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="credential-section" *ngIf="credentialInfo">
+                            <div class="register__box_form_error" *ngIf="errorMessage">Please fill the following fields
+                            </div>
+                            <div class="form-group">
+                                <label class="register__box_form_label">Username</label>
+                                <input type="text" class="form-control" formControlName="username">
+                                <div class="register__box_form_error"
+                                    *ngIf="registerFormControls.username.touched && registerFormControls.username.invalid">
+                                    <div *ngIf="registerFormControls.username.errors.required">
+                                        Please enter Username
+                                    </div>
+                                    <div *ngIf="registerFormControls.username.errors.minlength">
+                                        Username should atleast of 5 characters
+                                    </div>
+                                </div>
+                                <div class="register__box_form_error" *ngIf="errorMessage">This username is already
+                                    selected</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="register__box_form_label">Email</label>
+                                <input type="text" class="form-control" formControlName="email">
+                                <div class="register__box_form_error"
+                                    *ngIf="registerFormControls.email.touched && registerFormControls.email.invalid">
+                                    <div *ngIf="registerFormControls.email.errors.required">
+                                        Please enter Email
+                                    </div>
+                                    <div *ngIf="registerFormControls.email.errors.email">
+                                        It doesn't look like a proper Email
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="register__box_form_btn_container">
+                                <div class="back_section" (click)="backStep('credential_info')">
+                                    <span class="material-icons back_section-icon">keyboard_backspace</span>
+                                    <span class="back_section_text">Back</span>
+                                </div>
+                                <button class="register__box_form_btn" (click)="nextStep('credential_info')">
+                                    <span>Next</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="password-section" *ngIf="passwordInfo">
+                            <div class="form-group">
+                                <label class="register__box_form_label">Password</label>
+                                <input type="password" class="form-control" formControlName="password">
+                                <div class="register__box_form_error"
+                                    *ngIf="registerFormControls.password.touched && registerFormControls.password.invalid">
+                                    <div *ngIf="registerFormControls.password.errors.required">
+                                        Please enter Password
+                                    </div>
+                                    <div *ngIf="registerFormControls.password.errors.minlength">
+                                        Password should atleast of 5 characters
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="register__box_form_label">Confirm Password</label>
+                                <input type="password" class="form-control" formControlName="confirm_password">
+                                <div class="register__box_form_error"
+                                    *ngIf="registerFormControls.confirm_password.touched && registerFormControls.confirm_password.invalid">
+                                    <div *ngIf="registerFormControls.confirm_password.errors.required">
+                                        Please confirm your password
+                                    </div>
+                                    <div *ngIf="registerFormControls.confirm_password.errors.MustMatch">
+                                        Please confirm your password
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="register__box_form_btn_container">
+                                <div class="back_section" (click)="backStep('password_info')">
+                                    <span class="material-icons back_section-icon">keyboard_backspace</span>
+                                    <span class="back_section_text">Back</span>
+                                </div>
+                                <button class="register__box_form_btn" (click)="register()">
+                                    <span>Register</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

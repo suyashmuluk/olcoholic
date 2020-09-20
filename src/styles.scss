@@ -9,3 +9,28 @@ body {
   overflow-x: hidden;
   color: #141414;
 }
+
+.form-control:hover {
+  border: 2px solid #000;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border: 2px solid #000;
+}
+
+.form-control.ng-touched {
+	border: 2px solid #e74c3c;
+}
+.form-control.ng-dirty.ng-invalid {
+	border: 2px solid #e74c3c;
+}
+
+.form-control.ng-valid {
+	border: 2px solid #2ecc71;
+}
+
+.has-error input {
+	border: 2px solid #e74c3c;
+	color: #e74c3c;
+}

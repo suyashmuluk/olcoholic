@@ -21,12 +21,25 @@
   box-shadow: 1px 3px 5px #cecece;
   color: #c70039;
   z-index: 2;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.4s linear;
+
+  &__toggle {
+    padding: 8px 22px 0;
+
+    &_icon {
+      font-size: 30px;
+      font-weight: bold;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
 
   &__profile {
     display: flex;
     align-items: center;
-    padding: 40px 14px 0;
+    padding: 8px 14px 0;
 
     &_icon {
       height: 50px;
@@ -45,18 +58,79 @@
       font-size: 1.5rem;
     }
   }
+
+  &_list {
+    margin-top: 8px;
+
+    &_item {
+      padding: 8px 0 8px 23px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      border-bottom: 1px solid #f7f7f7;
+
+      &:nth-child(8) {
+        position: absolute;
+        bottom: 5px;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &-icon {
+        font-size: 30px;
+      }
+
+      &_text {
+        font-size: 18px;
+        margin-left: 8px;
+      }
+    }
+  }
 }
 
-.toggleSidebar{
-    width: 200px;
+.toggleSidebar {
+  width: 200px;
 }
 
 .product_section {
-  padding-left: 100px;
+  padding: 100px 0 0 100px;
+}
+
+.filter_box {
+  display: flex;
+  align-items: center;
+
+  &_text {
+    font-size: 18px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-icon {
+    color: #c70039;
+  }
+}
+
+.search_bar {
+  position: relative;
+
+  &-icon {
+    position: absolute;
+    top: 8px;
+    right: 4px;
+  }
+
+  @include for_size(phone) {
+    text-align: left;
+  }
 }
 
 .product_cards_container {
-  margin-top: 3rem;
+  margin-top: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 
@@ -147,6 +221,7 @@
       transition: all 0.3s ease-in;
 
       &:hover {
+        background-color: #b30033;
         box-shadow: 1px 1px 5px #8f8f8f;
       }
 
@@ -179,7 +254,7 @@
           width: 0%;
           height: 2px;
           background-color: #c70039;
-          transition: all 0.2s ease-in;
+          transition: all 0.3s ease-in;
         }
 
         &:hover {

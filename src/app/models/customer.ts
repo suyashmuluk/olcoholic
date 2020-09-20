@@ -1,6 +1,9 @@
 export default class Customer {
     _id: string;
-    name: String;
+    full_name: String;
+    dob: string;
+    username: string;
     email: string;
     password: string;
+    confirm_password: string;
 }

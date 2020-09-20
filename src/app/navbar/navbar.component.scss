@@ -22,11 +22,16 @@ $color: (
 }
 
 .custom_navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   height: 80px;
+  background-color: #fff;
   box-shadow: 1px 3px 8px #cecece;
   display: flex;
   align-items: center;
-  position: relative;
   padding: 0 5rem;
   z-index: 3;
 
@@ -113,7 +118,7 @@ $color: (
 
         &:hover {
           cursor: pointer;
-          background-color: #db003f;
+          background-color: #b30033;
           box-shadow: 3px 3px 5px #cecece;
         }
 

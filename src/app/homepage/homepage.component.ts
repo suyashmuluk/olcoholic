@@ -10,7 +10,6 @@ import Product from '../models/product';
 export class HomepageComponent implements OnInit {
 
   products: Product[];
-  sidebarListItems = false;
   constructor(private getProduct: GetproductsService) { }
 
   ngOnInit() {
@@ -21,17 +20,5 @@ export class HomepageComponent implements OnInit {
     this.getProduct.getProducts().subscribe((products: Product[]) => {
       this.products = products;
     });
-  }
-
-  toggleSidebar(value) {
-    if (value === 'open') {
-      document.getElementById('sidebar').classList.add('toggleSidebar');
-      setTimeout(() => {
-        this.sidebarListItems = true;
-      }, 400);
-    } else if (value === 'close') {
-      this.sidebarListItems = false;
-      document.getElementById('sidebar').classList.remove('toggleSidebar');
-    }
   }
 }
