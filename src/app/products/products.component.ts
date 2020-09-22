@@ -11,17 +11,23 @@ export class ProductsComponent implements OnInit {
 
   products: Product[];
   sidebarListItems = false;
+  username = '';
 
   constructor(private getProduct: GetproductsService) { }
 
   ngOnInit(): void {
     this.getproductList();
+    this.getUserLoginData();
   }
 
   getproductList() {
     this.getProduct.getProducts().subscribe((products: Product[]) => {
       this.products = products;
     });
+  }
+
+  getUserLoginData() {
+    this.username = localStorage.getItem('temporaryUserData');
   }
 
   toggleSidebar(value) {

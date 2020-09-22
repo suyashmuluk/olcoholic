@@ -13,11 +13,16 @@ import { MustMatch } from './password.validator';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
-  registerSteps = "personalInfo";
   errorMessage = false;
+  usernameError = false;
+  emailError = false;
   personalInfo = true;
   credentialInfo = false;
   passwordInfo = false;
+  passwordType = 'password';
+  confPasswordType = 'password';
+  openEye = true;
+  openEyeConf = true;
   customerList: Customer[];
 
   constructor(private formBuilder: FormBuilder, private router: Router, private customerService: CustomerService) { }
@@ -46,28 +51,23 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.controls;
   }
 
-  register() {
-    if (this.registerForm.invalid) {
-      this.registerForm.setErrors({
-        isInvalid: true
-      });
-    } else {
-      this.router.navigate(['/']);
-      localStorage.setItem('registrationData', JSON.stringify(this.registerForm.value));
-      this.customerService.addCustomer(this.registerForm.value).subscribe(() => {
-      });
-    }
-  }
-
-  backStep(value) {
-    if (value === 'credential_info') {
-      this.personalInfo = true;
-      this.credentialInfo = false;
-      this.passwordInfo = false;
-    } else if (value === 'password_info') {
-      this.personalInfo = false;
-      this.credentialInfo = true;
-      this.passwordInfo = false;
+  togglePassword(type, value) {
+    if (type === 'password') {
+      if (value === 'show') {
+        this.passwordType = 'text';
+        this.openEye = false;
+      } else if (value === 'hide') {
+        this.passwordType = 'password';
+        this.openEye = true;
+      }
+    } else if (type === 'conf_password') {
+      if (value === 'show') {
+        this.confPasswordType = 'text';
+        this.openEyeConf = false;
+      } else if (value === 'hide') {
+        this.confPasswordType = 'password';
+        this.openEyeConf = true;
+      }
     }
   }
 
@@ -83,24 +83,52 @@ export class RegisterComponent implements OnInit {
         return false;
       }
     } else if (value === 'credential_info') {
-      for (let customer of this.customerList) {
-        if (this.registerForm.value.username === customer['username']) {
+      for (let customers of this.customerList) {
+        if ((this.registerForm.value.username === customers['username'])) {
           this.credentialInfo = true;
           this.passwordInfo = false;
-          this.errorMessage = true;
+          this.usernameError = true;
+        } else if ((this.registerForm.value.email === customers['email'])) {
+          this.credentialInfo = true;
+          this.passwordInfo = false;
+          this.emailError = true;
+        } else if (this.registerForm.controls.username.valid && this.registerForm.controls.email.valid) {
+          this.personalInfo = false;
+          this.credentialInfo = false;
+          this.passwordInfo = true;
+          this.errorMessage = false;
+          this.usernameError = false;
+          this.emailError = false;
         } else {
-          if (this.registerForm.controls.username.valid && this.registerForm.controls.email.valid) {
-            this.personalInfo = false;
-            this.credentialInfo = false;
-            this.passwordInfo = true;
-            this.errorMessage = false;
-          } else {
-            this.errorMessage = true;
-            return false;
-          }
+          this.errorMessage = true;
+          return false;
         }
       }
     }
   }
 
+  backStep(value) {
+    if (value === 'credential_info') {
+      this.personalInfo = true;
+      this.credentialInfo = false;
+      this.passwordInfo = false;
+    } else if (value === 'password_info') {
+      this.personalInfo = false;
+      this.credentialInfo = true;
+      this.passwordInfo = false;
+    }
+  }
+
+  register() {
+    if (this.registerForm.invalid) {
+      this.registerForm.setErrors({
+        isInvalid: true
+      });
+    } else {
+      this.router.navigate(['/']);
+      localStorage.setItem('temporaryUserData', this.registerForm.value.username);
+      this.customerService.addCustomer(this.registerForm.value).subscribe(() => {
+      });
+    }
+  }
 }

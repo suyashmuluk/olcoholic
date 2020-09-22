@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  isLoggedin = false;
+
   constructor() { }
 
   ngOnInit() {
+    this.getUserLoginData();
+  }
+
+  getUserLoginData() {
+    if (localStorage.getItem('registrationData') || localStorage.getItem('temporaryUserData')) {
+      this.isLoggedin = true;
+    }
   }
 
   toggleNavbar() {

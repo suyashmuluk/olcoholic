@@ -9,7 +9,7 @@
         <li class="custom_navbar__list_item">About</li>
         <li class="custom_navbar__list_item">Contact</li>
         <li class="custom_navbar__list_item">
-            <div>
+            <div *ngIf="!isLoggedin">
                 <button class="custom_navbar__list_item_btn" routerLink="/login">Login</button>
                 <button class="custom_navbar__list_item_btn" routerLink="/register">Register</button>
             </div>

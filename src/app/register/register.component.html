@@ -1,11 +1,11 @@
 <div class="register__box">
     <div class="row">
-        <div class="col-lg-6 col-md-6-col-12 register__box_illustration_container">
+        <div class="col-lg-6 col-md-6 col-12 register__box_illustration_container">
             <div class="register__box_img">
                 <img src="../../assets/olcoholic_images/register.png" alt="" style="width: 100%;">
             </div>
         </div>
-        <div class="col-lg-6 col-md-6-col-12">
+        <div class="col-lg-6 col-md-6 col-12">
             <div class="register__box_form_section">
                 <div class="register__box_logo">
                     Olcoholic
@@ -14,12 +14,34 @@
                 <div class="register__box_subtitle">
                     Get ready to be high!!!
                 </div>
+                <div class="register__box_steps_container">
+                    <div class="register__box_step">
+                        <div class="register__box_step_number" [ngClass]="personalInfo ? 'stepActive' : ''">1</div>
+                        <div class="register__box_step_title">
+                            Personal Details
+                        </div>
+                    </div>
+
+                    <div class="register__box_step">
+                        <div class="register__box_step_number" [ngClass]="credentialInfo ? 'stepActive' : ''">2</div>
+                        <div class="register__box_step_title">
+                            Account Details
+                        </div>
+                    </div>
+
+                    <div class="register__box_step">
+                        <div class="register__box_step_number" [ngClass]="passwordInfo ? 'stepActive' : ''">3</div>
+                        <div class="register__box_step_title">
+                            Password Details
+                        </div>
+                    </div>
+                </div>
                 <div class="register__box_form">
                     <form [formGroup]="registerForm">
                         <div class="register__box_form_error" *ngIf="registerForm.errors">
                             Please fill all input fields
                         </div>
-                        <div class="personal-info" *ngIf="personalInfo">
+                        <div class="personal-info" id="personal-info" *ngIf="personalInfo">
                             <div class="register__box_form_error" *ngIf="errorMessage">Please fill the following fields
                             </div>
                             <div class="form-group">
@@ -49,7 +71,7 @@
                             </div>
                         </div>
 
-                        <div class="credential-section" *ngIf="credentialInfo">
+                        <div class="credential-section" id="credential-section" *ngIf="credentialInfo">
                             <div class="register__box_form_error" *ngIf="errorMessage">Please fill the following fields
                             </div>
                             <div class="form-group">
@@ -64,7 +86,7 @@
                                         Username should atleast of 5 characters
                                     </div>
                                 </div>
-                                <div class="register__box_form_error" *ngIf="errorMessage">This username is already
+                                <div class="register__box_form_error" *ngIf="usernameError">This username is already
                                     selected</div>
                             </div>
                             <div class="form-group">
@@ -79,6 +101,10 @@
                                         It doesn't look like a proper Email
                                     </div>
                                 </div>
+                                <div class="register__box_form_error" *ngIf="emailError">
+                                    <div>This Email is already exist.</div>
+                                    <div>Did you forgot your password ?</div>
+                                </div>
                             </div>
                             <div class="register__box_form_btn_container">
                                 <div class="back_section" (click)="backStep('credential_info')">
@@ -91,10 +117,16 @@
                             </div>
                         </div>
 
-                        <div class="password-section" *ngIf="passwordInfo">
+                        <div class="password-section" id="password-section" *ngIf="passwordInfo">
                             <div class="form-group">
                                 <label class="register__box_form_label">Password</label>
-                                <input type="password" class="form-control" formControlName="password">
+                                <input [type]="passwordType" class="form-control" formControlName="password">
+                                <img src="https://img.icons8.com/color/24/000000/visible.png"
+                                    class="register__box_form_eye" *ngIf="openEye"
+                                    (click)="togglePassword('password', 'show')">
+                                <img src="https://img.icons8.com/color/24/000000/invisible.png"
+                                    class="register__box_form_eye" *ngIf="!openEye"
+                                    (click)="togglePassword('password', 'hide')">
                                 <div class="register__box_form_error"
                                     *ngIf="registerFormControls.password.touched && registerFormControls.password.invalid">
                                     <div *ngIf="registerFormControls.password.errors.required">
@@ -107,7 +139,14 @@
                             </div>
                             <div class="form-group">
                                 <label class="register__box_form_label">Confirm Password</label>
-                                <input type="password" class="form-control" formControlName="confirm_password">
+                                <input [type]="confPasswordType" class="form-control"
+                                    formControlName="confirm_password">
+                                <img src="https://img.icons8.com/color/24/000000/visible.png"
+                                    class="register__box_form_eye" *ngIf="openEyeConf"
+                                    (click)="togglePassword('conf_password', 'show')">
+                                <img src="https://img.icons8.com/color/24/000000/invisible.png"
+                                    class="register__box_form_eye" *ngIf="!openEyeConf"
+                                    (click)="togglePassword('conf_password', 'hide')">
                                 <div class="register__box_form_error"
                                     *ngIf="registerFormControls.confirm_password.touched && registerFormControls.confirm_password.invalid">
                                     <div *ngIf="registerFormControls.confirm_password.errors.required">
@@ -130,6 +169,12 @@
                         </div>
                     </form>
                 </div>
+            </div>
+
+            <div class="register__box_link">
+                <span class="register__box_link_text" routerLink="/login">
+                    Already have an account ?
+                </span>
             </div>
         </div>
     </div>

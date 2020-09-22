@@ -8,10 +8,10 @@
     </div>
     <div class="sidebar__profile">
         <div class="sidebar__profile_icon">
-            S
+            {{username.charAt(0) | uppercase}}
         </div>
         <div class="sidebar__profile_name" *ngIf="sidebarListItems">
-            Suyash
+            {{username}}
         </div>
     </div>
 

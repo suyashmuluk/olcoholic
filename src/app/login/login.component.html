@@ -1,30 +1,68 @@
 <div class="loginBox__bg">
-
     <div class="loginBox">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-12">
+            <div class="col-lg-6 col-md-6 col-12 loginBox_illustration_container">
                 <div class="loginBox_img">
                     <img src="../../assets/olcoholic_images/register.png" alt="" style="width: 100%;">
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-12">
-                <div class="loginBox__form">
-                    <div class="loginBox__form_title">Olcoholic</div>
-                    <form>
-                        <div class="form-group">
-                            <label>Username</label>
-                            <input type="text" class="form-control loginBox__form_cusomInput">
+                <div class="loginBox_form_section">
+                    <div class="loginBox__form">
+                        <div class="loginBox__form_logo">Olcoholic</div>
+                        <div class="loginBox__form_title">Login</div>
+                        <div class="loginBox__form_subtitle">
+                            Get ready to be high!!!
                         </div>
+                        <form [formGroup]="loginForm">
+                            <div class="loginBox__form_error" *ngIf="loginForm.errors">
+                                Please fill all input fields
+                            </div>
+                            <div class="form-group">
+                                <label class="loginBox__form_label">Username</label>
+                                <input type="text" class="form-control loginBox__form_cusomInput"
+                                    formControlName="username">
+                                <div class="loginBox__form_error"
+                                    *ngIf="loginFormControls.username.touched && loginFormControls.username.invalid">
+                                    <div *ngIf="loginFormControls.username.errors.required">
+                                        Please enter Username
+                                    </div>
+                                </div>
+                                <div class="loginBox__form_error" *ngIf="usernameError">Make sure that username is
+                                    correct</div>
+                            </div>
 
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="text" class="form-control loginBox__form_cusomInput">
-                        </div>
+                            <div class="form-group">
+                                <label class="loginBox__form_label">Password</label>
+                                <input [type]="inputType" class="form-control loginBox__form_cusomInput"
+                                    formControlName="password">
+                                <img src="https://img.icons8.com/color/24/000000/visible.png" class="loginBox__form_eye"
+                                    *ngIf="openEye" (click)="togglePassword('show')">
+                                <img src="https://img.icons8.com/color/24/000000/invisible.png"
+                                    class="loginBox__form_eye" *ngIf="!openEye" (click)="togglePassword('hide')">
+                                <div class="loginBox__form_error"
+                                    *ngIf="loginFormControls.password.touched && loginFormControls.password.invalid">
+                                    <div *ngIf="loginFormControls.password.errors.required">
+                                        Please enter Password
+                                    </div>
+                                </div>
+                                <div class="loginBox__form_error" *ngIf="errorMessage">Make sure that password is
+                                    correct</div>
+                                <div>
+                                    <span class="loginBox__form_hint">Forgot Password ?</span>
+                                </div>
+                            </div>
 
-                        <div class="text-right">
-                            <button class="loginBox__form_btn">Login</button>
-                        </div>
-                    </form>
+                            <div class="text-right">
+                                <button class="loginBox__form_btn" (click)="login()">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="loginBox_link">
+                    <span class="loginBox_link_text" routerLink="/register">
+                        Didn't registered yet ?
+                    </span>
                 </div>
             </div>
         </div>

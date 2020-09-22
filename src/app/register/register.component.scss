@@ -22,16 +22,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
+  @include for_size(ipad) {
+    width: 70%;
+  }
+
   @include for_size(phone) {
     box-shadow: none;
     width: 90%;
   }
 
   &_illustration_container {
-    @include for_size(ipad) {
-      display: none;
-    }
-
     @include for_size(phone) {
       display: none;
     }
@@ -63,11 +63,45 @@
     text-align: center;
   }
 
+  &_steps_container {
+    margin-top: 8px;
+    display: flex;
+  }
+
+  &_step {
+    text-align: center;
+
+    &_number {
+      margin: 0 auto;
+      width: 30px;
+      height: 30px;
+      background-color: #f1f1f1;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      box-shadow: 1px 3px 8px #cecece;
+    }
+
+    &_title {
+      line-height: 18px;
+      margin-top: 4px;
+    }
+  }
+
   &_form {
     margin-top: 1rem;
+    overflow-x: hidden;
 
     &_label {
       font-weight: bold;
+    }
+
+    &_eye {
+      position: absolute;
+      bottom: 10px;
+      right: 5px;
     }
 
     &_error {
@@ -121,4 +155,26 @@
       }
     }
   }
+
+  &_link {
+    text-align: center;
+    margin-top: 8px;
+
+    &_text {
+      font-size: 15px;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.stepActive {
+  background-color: limegreen;
+  color: #fff;
 }

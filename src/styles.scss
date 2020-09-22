@@ -10,6 +10,10 @@ body {
   color: #141414;
 }
 
+.form-group {
+  position: relative;
+}
+
 .form-control:hover {
   border: 2px solid #000;
 }
@@ -20,17 +24,17 @@ body {
 }
 
 .form-control.ng-touched {
-	border: 2px solid #e74c3c;
+  border: 2px solid #e74c3c;
 }
 .form-control.ng-dirty.ng-invalid {
-	border: 2px solid #e74c3c;
+  border: 2px solid #e74c3c;
 }
 
 .form-control.ng-valid {
-	border: 2px solid #2ecc71;
+  border: 2px solid #2ecc71;
 }
 
 .has-error input {
-	border: 2px solid #e74c3c;
-	color: #e74c3c;
+  border: 2px solid #e74c3c;
+  color: #e74c3c;
 }
