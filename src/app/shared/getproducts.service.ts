@@ -13,15 +13,15 @@ export class GetproductsService {
     return this.dbConnect.get('products');
   }
 
-  addProduct(name: string, description: string, price: string) {
-    return this.dbConnect.post('products', { name, description, price });
+  addProduct(data: object) {
+    return this.dbConnect.post('products', data);
   }
 
   deleteProduct(id: string) {
     return this.dbConnect.delete(`products/${id}`);
   }
 
-  updateProductInfo(id: string, name: string, description: string, price: string) {
-    return this.dbConnect.patch(`products/${id}`, { name, description, price });
+  updateProductInfo(id: string, data: object) {
+    return this.dbConnect.patch(`products/${id}`, data);
   }
 }

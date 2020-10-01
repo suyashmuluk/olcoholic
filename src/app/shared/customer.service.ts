@@ -21,7 +21,16 @@ export class CustomerService {
     return this.dbConnect.delete(`customers/${id}`);
   }
 
-  updateCustomerInfo(id: string, full_name: string, dob: string, username: string, email: string, password: string, confirm_password: string) {
-    return this.dbConnect.patch(`customers/${id}`, { full_name, dob, username, email, password, confirm_password });
+  updateCustomerInfo(id: string, data: object) {
+    return this.dbConnect.patch(`customers/${id}`, data);
   }
+
+  buyProduct(id: string, data: object) {
+    return this.dbConnect.post(`customers/${id}`, data);
+  }
+
+  getbuyProducts(id: string) {
+    return this.dbConnect.get(`customers/${id}`);
+  }
+
 }

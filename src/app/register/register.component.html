@@ -16,7 +16,9 @@
                 </div>
                 <div class="register__box_steps_container">
                     <div class="register__box_step">
-                        <div class="register__box_step_number" [ngClass]="personalInfo ? 'stepActive' : ''">1</div>
+                        <div class="register__box_step_number" [ngClass]="personalInfo ? 'stepActive' : ''">
+                            1
+                        </div>
                         <div class="register__box_step_title">
                             Personal Details
                         </div>
@@ -30,7 +32,8 @@
                     </div>
 
                     <div class="register__box_step">
-                        <div class="register__box_step_number" [ngClass]="passwordInfo ? 'stepActive' : ''">3</div>
+                        <div class="register__box_step_number register__box_step_last"
+                            [ngClass]="passwordInfo ? 'stepActive' : ''">3</div>
                         <div class="register__box_step_title">
                             Password Details
                         </div>

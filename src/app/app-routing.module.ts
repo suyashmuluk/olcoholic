@@ -7,8 +7,9 @@ import { RegisterComponent } from './register/register.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductsComponent } from './products/products.component';
 import { BuyComponent } from './buy/buy.component';
-
-
+import { RecentShoppingComponent } from './recent-shopping/recent-shopping.component';
+import { MyBasketComponent } from './my-basket/my-basket.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -18,6 +19,9 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'buy', component: BuyComponent },
+  { path: 'recent-shopping', component: RecentShoppingComponent },
+  { path: 'my-basket', component: MyBasketComponent },
+  { path: 'favorites', component: FavoritesComponent },
 ];
 
 @NgModule({

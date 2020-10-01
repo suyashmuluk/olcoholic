@@ -18,6 +18,12 @@
                             <div class="loginBox__form_error" *ngIf="loginForm.errors">
                                 Please fill all input fields
                             </div>
+                            <!-- <mat-form-field appearance="fill">
+                                <mat-label>Username</mat-label>
+                                <input type="text" matInput formControlName="username">
+                                <mat-error>Please enter Username</mat-error>
+                                <mat-error *ngIf="usernameError">Make sure that username is correct</mat-error>
+                            </mat-form-field> -->
                             <div class="form-group">
                                 <label class="loginBox__form_label">Username</label>
                                 <input type="text" class="form-control loginBox__form_cusomInput"
@@ -31,6 +37,13 @@
                                 <div class="loginBox__form_error" *ngIf="usernameError">Make sure that username is
                                     correct</div>
                             </div>
+
+                            <!-- <mat-form-field appearance="fill">
+                                <mat-label>Password</mat-label>
+                                <input type="password" matInput formControlName="password">
+                                <mat-error>Please enter Password</mat-error>
+                                <mat-error *ngIf="errorMessage">Make sure that password is correct</mat-error>
+                            </mat-form-field> -->
 
                             <div class="form-group">
                                 <label class="loginBox__form_label">Password</label>

@@ -23,6 +23,10 @@
   z-index: 2;
   transition: all 0.4s linear;
 
+  @include for_size(phone) {
+    display: none;
+  }
+
   &__toggle {
     padding: 8px 22px 0;
 
@@ -41,7 +45,7 @@
     align-items: center;
     padding: 8px 14px 0;
 
-    &_icon {
+    &_logo {
       height: 50px;
       width: 50px;
       border-radius: 50%;
@@ -57,6 +61,14 @@
       margin-left: 0.5rem;
       font-size: 1.5rem;
       text-transform: capitalize;
+      display: flex;
+      align-items: center;
+    }
+
+    &_icon {
+      @extend .sidebar__toggle_icon;
+      font-size: 16px;
+      margin-left: 8px;
     }
   }
 
@@ -64,13 +76,14 @@
     margin-top: 8px;
 
     &_item {
+      position: relative;
       padding: 8px 0 8px 23px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
       border-bottom: 1px solid #f7f7f7;
 
-      &:nth-child(8) {
+      &:nth-child(9) {
         position: absolute;
         bottom: 5px;
       }
@@ -87,6 +100,25 @@
         font-size: 18px;
         margin-left: 8px;
       }
+
+      &_badge {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        height: 20px;
+        width: 20px;
+        background-color: #c70039;
+        box-shadow: 1px 3px 8px #cecece;
+
+        &-text {
+          color: #fff;
+          font-weight: bold;
+        }
+      }
     }
   }
 }
@@ -97,6 +129,10 @@
 
 .product_section {
   padding: 100px 0 0 100px;
+
+  @include for_size(phone) {
+    padding: 100px 0 0 20px;
+  }
 }
 
 .filter_box {
@@ -105,6 +141,10 @@
 
   &_text {
     font-size: 18px;
+
+    @include for_size(phone) {
+      display: none;
+    }
 
     &:hover {
       cursor: pointer;
@@ -117,16 +157,18 @@
 }
 
 .search_bar {
-  position: relative;
-
-  &-icon {
-    position: absolute;
-    top: 8px;
-    right: 4px;
-  }
+  text-align: right;
 
   @include for_size(phone) {
     text-align: left;
+  }
+
+  &_input {
+    width: 60%;
+
+    @include for_size(phone) {
+      width: 100%;
+    }
   }
 }
 

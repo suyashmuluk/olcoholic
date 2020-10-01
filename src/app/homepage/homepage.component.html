@@ -15,7 +15,7 @@
         <div class="product_section">
             <div class="product_cards_container">
                 <div class="product_card" *ngFor="let product of products | slice: 0:4">
-                    <div class="product_card__wishlist">
+                    <div class="product_card__wishlist" matTooltip="Add to Wishlist">
                         <span class="material-icons product_card__wishlist-icon">favorite</span>
                     </div>
                     <div class="product_card__share">
@@ -32,12 +32,12 @@
                             <span class="product_card__price_info">{{product.price}}</span>
                             <span>/-</span>
                         </div>
-                        <button class="product_card__btn">
-                            <span>Buy</span>
+                        <button class="product_card__btn" (click)="buy(product)">
+                            <span>Order Now</span>
                         </button>
                         <div class="product_card__link">
-                            <span class="material-icons" style="margin-right: .5rem">local_grocery_store</span>
-                            <span class="product_card__link_text">Add to Cart</span>
+                            <span class="material-icons" style="margin-right: .5rem">shopping_basket</span>
+                            <span class="product_card__link_text">Add to Basket</span>
                         </div>
                     </div>
                 </div>

@@ -82,11 +82,12 @@
       justify-content: center;
       font-weight: bold;
       box-shadow: 1px 3px 8px #cecece;
-    }
+      position: relative;
 
-    &_title {
-      line-height: 18px;
-      margin-top: 4px;
+      &_title {
+        line-height: 18px;
+        margin-top: 4px;
+      }
     }
   }
 

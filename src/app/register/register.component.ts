@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { CustomerService } from '../shared/customer.service';
 import Customer from '../models/customer';
 import { MustMatch } from './password.validator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-register',
@@ -25,7 +27,7 @@ export class RegisterComponent implements OnInit {
   openEyeConf = true;
   customerList: Customer[];
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private customerService: CustomerService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private customerService: CustomerService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -125,8 +127,8 @@ export class RegisterComponent implements OnInit {
         isInvalid: true
       });
     } else {
+      localStorage.setItem('registrationData', this.registerForm.value.username);
       this.router.navigate(['/']);
-      localStorage.setItem('temporaryUserData', this.registerForm.value.username);
       this.customerService.addCustomer(this.registerForm.value).subscribe(() => {
       });
     }

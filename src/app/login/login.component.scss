@@ -79,7 +79,7 @@
       font-weight: bold;
     }
 
-    &_eye{
+    &_eye {
       position: absolute;
       right: 5px;
       bottom: 34px;
@@ -137,4 +137,8 @@
       }
     }
   }
+}
+
+mat-form-field {
+  width: 100%;
 }

@@ -4,7 +4,16 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +26,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductsComponent } from './products/products.component';
 import { BuyComponent } from './buy/buy.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { RecentShoppingComponent } from './recent-shopping/recent-shopping.component';
+import { MyBasketComponent } from './my-basket/my-basket.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +42,27 @@ import { BuyComponent } from './buy/buy.component';
     NavbarComponent,
     FooterComponent,
     ProductsComponent,
-    BuyComponent
+    BuyComponent,
+    DialogComponent,
+    RecentShoppingComponent,
+    MyBasketComponent,
+    FavoritesComponent
+  ],
+  entryComponents: [
+    DialogComponent
   ],
   imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSnackBarModule,
+    MatBadgeModule,
+
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
