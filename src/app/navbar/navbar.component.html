@@ -2,6 +2,36 @@
     <div class="custom_navbar__logo" routerLink="/">
         Olcoholic
     </div>
+    <div class="custom_navbar__profile" *ngIf="isLoggedin">
+        <div class="custom_navbar__profile_icon">
+            {{username.charAt(0) | uppercase}}
+        </div>
+        <div class="custom_navbar__profile_name">{{username}}</div>
+        <div class="custom_navbar__profile_menu">
+            <div class="custom_navbar__profile_menu_items" routerLink="/recent-shopping" routerLinkActive="link-active">
+                <span class="material-icons custom_navbar__profile_menu_items-icon">check_circle</span>
+                <span class="custom_navbar__profile_menu_items_text">Recent Shopping</span>
+            </div>
+            <div class="custom_navbar__profile_menu_items" routerLink="/favorites" routerLinkActive="link-active">
+                <span class="material-icons custom_navbar__profile_menu_items-icon">favorite</span>
+                <span class="custom_navbar__profile_menu_items_text">Favorites</span>
+            </div>
+            <div class="custom_navbar__profile_menu_items" routerLink="/my-basket" routerLinkActive="link-active">
+                <span class="material-icons custom_navbar__profile_menu_items-icon">shopping_basket</span>
+                <span class="custom_navbar__profile_menu_items_text">My Basket</span>
+            </div>
+            <div style="padding: 4px">
+                <div class="custom_navbar__profile_menu_items-profile">
+                    <span class="material-icons custom_navbar__profile_menu_items-icon">edit</span>
+                    <span class="custom_navbar__profile_menu_items_text">Edit Profile</span>
+                </div>
+            </div>
+            <div class="custom_navbar__profile_menu_items-link" (click)="logOut()">
+                <span class="material-icons custom_navbar__profile_menu_items-icon">power_settings_new</span>
+                <span class="custom_navbar__profile_menu_items_text">Log out</span>
+            </div>
+        </div>
+    </div>
     <ul class="custom_navbar__list">
         <li class="custom_navbar__list_item">
             Services

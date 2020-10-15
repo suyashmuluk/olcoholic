@@ -16,7 +16,7 @@
                 </div>
                 <div class="register__box_steps_container">
                     <div class="register__box_step">
-                        <div class="register__box_step_number" [ngClass]="personalInfo ? 'stepActive' : ''">
+                        <div id="step1" class="register__box_step_number" [ngClass]="personalInfo ? 'stepActive' : ''">
                             1
                         </div>
                         <div class="register__box_step_title">
@@ -25,7 +25,8 @@
                     </div>
 
                     <div class="register__box_step">
-                        <div class="register__box_step_number" [ngClass]="credentialInfo ? 'stepActive' : ''">2</div>
+                        <div id="step2" class="register__box_step_number"
+                            [ngClass]="credentialInfo ? 'stepActive' : ''">2</div>
                         <div class="register__box_step_title">
                             Account Details
                         </div>
@@ -106,7 +107,9 @@
                                 </div>
                                 <div class="register__box_form_error" *ngIf="emailError">
                                     <div>This Email is already exist.</div>
-                                    <div>Did you forgot your password ?</div>
+                                </div>
+                                <div class="register__box_form_hint" *ngIf="emailError">
+                                    Have you forgot your password?
                                 </div>
                             </div>
                             <div class="register__box_form_btn_container">

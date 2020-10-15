@@ -11,127 +11,11 @@
   }
 }
 
-.sidebar {
-  position: fixed;
-  top: 80px;
-  left: 0;
-  bottom: 0;
-  width: 80px;
-  background-color: #fff;
-  box-shadow: 1px 3px 5px #cecece;
-  color: #c70039;
-  z-index: 2;
-  transition: all 0.4s linear;
-
-  @include for_size(phone) {
-    display: none;
-  }
-
-  &__toggle {
-    padding: 8px 22px 0;
-
-    &_icon {
-      font-size: 30px;
-      font-weight: bold;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-  }
-
-  &__profile {
-    display: flex;
-    align-items: center;
-    padding: 8px 14px 0;
-
-    &_logo {
-      height: 50px;
-      width: 50px;
-      border-radius: 50%;
-      box-shadow: 1px 3px 8px #cecece;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 2rem;
-      font-weight: bold;
-    }
-
-    &_name {
-      margin-left: 0.5rem;
-      font-size: 1.5rem;
-      text-transform: capitalize;
-      display: flex;
-      align-items: center;
-    }
-
-    &_icon {
-      @extend .sidebar__toggle_icon;
-      font-size: 16px;
-      margin-left: 8px;
-    }
-  }
-
-  &_list {
-    margin-top: 8px;
-
-    &_item {
-      position: relative;
-      padding: 8px 0 8px 23px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      border-bottom: 1px solid #f7f7f7;
-
-      &:nth-child(9) {
-        position: absolute;
-        bottom: 5px;
-      }
-
-      &:hover {
-        cursor: pointer;
-      }
-
-      &-icon {
-        font-size: 30px;
-      }
-
-      &_text {
-        font-size: 18px;
-        margin-left: 8px;
-      }
-
-      &_badge {
-        position: absolute;
-        top: 4px;
-        right: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        height: 20px;
-        width: 20px;
-        background-color: #c70039;
-        box-shadow: 1px 3px 8px #cecece;
-
-        &-text {
-          color: #fff;
-          font-weight: bold;
-        }
-      }
-    }
-  }
-}
-
-.toggleSidebar {
-  width: 200px;
-}
-
 .product_section {
   padding: 100px 0 0 100px;
 
   @include for_size(phone) {
-    padding: 100px 0 0 20px;
+    padding: 100px 20px 0 20px;
   }
 }
 
@@ -164,11 +48,19 @@
   }
 
   &_input {
-    width: 60%;
+    width: 50%;
+    margin-left: auto;
+    border-radius: 30px;
 
     @include for_size(phone) {
       width: 100%;
     }
+  }
+
+  &-icon {
+    position: absolute;
+    top: 8px;
+    right: 4px;
   }
 }
 
@@ -181,8 +73,13 @@
     box-shadow: 1px 1px 3px #cecece;
     border-radius: 4px;
     width: 97%;
+    max-width: 302px;
     position: relative;
-    margin-bottom: 1rem;
+    margin: 0 auto 1rem;
+
+    @include for_size(phone) {
+      max-width: none;
+    }
 
     &__wishlist {
       position: absolute;
@@ -313,5 +210,22 @@
         }
       }
     }
+  }
+}
+
+.not_found_section {
+  &_img {
+    background: url("../../assets/olcoholic_images/not_found1.jpg");
+    height: 50vh;
+    width: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &_text {
+    text-align: center;
+    font-weight: bold;
+    font-size: 2.5rem;
   }
 }

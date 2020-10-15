@@ -9,14 +9,14 @@ export class BasketService {
   constructor(private dbConnect: DbconnectService) { }
 
   getBasketProducts(id: string) {
-    return this.dbConnect.get(`customers/${id}/buyproducts`);
+    return this.dbConnect.get(`customers/${id}/basket`);
   }
 
   addBasketProduct(id: string, data: object) {
-    return this.dbConnect.post(`customers/${id}/buyproducts`, { data })
+    return this.dbConnect.post(`customers/${id}/basket`, { data })
   }
 
   deleteBasketProduct(id: string, productId: string) {
-    return this.dbConnect.delete(`customers/${id}/buyproducts/${productId}`);
+    return this.dbConnect.delete(`customers/${id}/basket/${productId}`);
   }
 }

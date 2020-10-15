@@ -3,8 +3,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -14,6 +16,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +33,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { RecentShoppingComponent } from './recent-shopping/recent-shopping.component';
 import { MyBasketComponent } from './my-basket/my-basket.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -46,13 +50,15 @@ import { FavoritesComponent } from './favorites/favorites.component';
     DialogComponent,
     RecentShoppingComponent,
     MyBasketComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    SidebarComponent
   ],
   entryComponents: [
     DialogComponent
   ],
   imports: [
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatCheckboxModule,
     MatCheckboxModule,
@@ -62,6 +68,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
     MatNativeDateModule,
     MatSnackBarModule,
     MatBadgeModule,
+    MatAutocompleteModule,
 
     BrowserModule,
     BrowserAnimationsModule,
@@ -69,7 +76,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
     FormsModule,
     ReactiveFormsModule,
     MatTooltipModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

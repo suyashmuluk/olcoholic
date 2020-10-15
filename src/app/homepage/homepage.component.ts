@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { GetproductsService } from '../shared/getproducts.service';
-import Product from '../models/product';
 import { Router } from '@angular/router';
 
 
@@ -11,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HomepageComponent implements OnInit {
 
-  products: Product[];
+  products = [];
   username = '';
   isLoggedin = false;
 
@@ -23,8 +22,8 @@ export class HomepageComponent implements OnInit {
   }
 
   getproductList() {
-    this.getProduct.getProducts().subscribe((products: Product[]) => {
-      this.products = products;
+    this.getProduct.getProducts().subscribe(data => {
+      this.products = data['product'];
     });
   }
 

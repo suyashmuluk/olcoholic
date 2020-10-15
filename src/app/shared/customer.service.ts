@@ -17,6 +17,10 @@ export class CustomerService {
     return this.dbConnect.post('customers', data);
   }
 
+  loginCustomer(data: object) {
+    return this.dbConnect.post('customers/login', data);
+  }
+
   deleteCustomer(id: string) {
     return this.dbConnect.delete(`customers/${id}`);
   }

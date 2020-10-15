@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomerService } from '../shared/customer.service';
-import Customer from '../models/customer';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +11,7 @@ import Customer from '../models/customer';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  customerList: Customer[];
+  customerList = [];
   errorMessage = false;
   usernameError = false;
   openEye = true;
@@ -25,18 +24,10 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', [Validators.required]]
     });
-
-    this.getUserData();
   }
 
   get loginFormControls() {
     return this.loginForm.controls;
-  }
-
-  getUserData() {
-    this.customerService.getCustomers().subscribe((customerList: Customer[]) => {
-      this.customerList = customerList;
-    });
   }
 
   togglePassword(value) {
@@ -55,19 +46,10 @@ export class LoginComponent implements OnInit {
         isInvalid: true
       });
     } else {
-      for (let customer of this.customerList) {
-        if (this.loginForm.value.username !== customer['username']) {
-          this.usernameError = true;
-        } else if (this.loginForm.value.password !== customer['password']) {
-          this.errorMessage = true;
-        } else if (this.loginForm.value.username === customer['username'] && this.loginForm.value.password === customer['password']) {
-          this.usernameError = false;
-          this.errorMessage = false;
-          this.router.navigate(['/']);
-          localStorage.setItem('temporaryUserData', this.loginForm.value.username);
-        }
-      }
+      this.customerService.loginCustomer({ username: this.loginForm.value.username, password: this.loginForm.value.password }).subscribe(() => {
+        console.log("login successful");
+      });
+      localStorage.setItem('temporaryUserData', this.loginForm.value.username);
     }
   }
-
 }

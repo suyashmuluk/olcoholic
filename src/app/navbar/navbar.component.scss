@@ -49,6 +49,91 @@ $color: (
     &:hover {
       cursor: pointer;
     }
+
+    @include for_size(phone) {
+      font-size: 2rem;
+    }
+  }
+
+  &__profile {
+    display: none;
+
+    @include for_size(phone) {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      right: 16%;
+      z-index: 4;
+    }
+
+    &_icon {
+      height: 32px;
+      width: 32px;
+      box-shadow: 1px 3px 8px #cecece;
+      border-radius: 50%;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #c70039;
+      font-size: 18px;
+    }
+
+    &_name {
+      border-radius: 0 5px 5px 0;
+      padding: 0 4px;
+      font-weight: bold;
+    }
+
+    &_menu {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fff;
+      width: 150px;
+      border-radius: 4px;
+      box-shadow: 1px 3px 8px #cecece;
+      visibility: hidden;
+
+      &_items {
+        display: flex;
+        align-items: center;
+        margin: 4px 0;
+        padding: 2px 4px;
+
+        &-icon {
+          font-size: 20px;
+          color: #c70039;
+        }
+
+        &_text {
+          font-size: 15px;
+          color: #c70039;
+          margin-left: 2px;
+        }
+
+        &-profile {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #464242;
+          border-radius: 30px;
+          margin: 12px 0 4px;
+        }
+
+        &-link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+
+    &:hover .custom_navbar__profile_menu {
+      visibility: visible;
+    }
   }
 
   &__list {
@@ -182,3 +267,13 @@ $color: (
   position: relative;
   bottom: 7px;
 }
+
+.link-active {
+  background: rgb(255, 199, 215);
+  background: linear-gradient(
+    297deg,
+    rgba(255, 199, 215, 1) 38%,
+    rgba(255, 160, 171, 1) 100%
+  );
+}
+

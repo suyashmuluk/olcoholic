@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomerService } from '../shared/customer.service';
-import Customer from '../models/customer';
 import { MustMatch } from './password.validator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -25,7 +24,9 @@ export class RegisterComponent implements OnInit {
   confPasswordType = 'password';
   openEye = true;
   openEyeConf = true;
-  customerList: Customer[];
+  customerList = [];
+  idString = "ol";
+  randomId = "";
 
   constructor(private formBuilder: FormBuilder, private router: Router, private customerService: CustomerService, private snackBar: MatSnackBar) { }
 
@@ -44,8 +45,9 @@ export class RegisterComponent implements OnInit {
   }
 
   getUserData() {
-    this.customerService.getCustomers().subscribe((customerList: Customer[]) => {
-      this.customerList = customerList;
+    this.customerService.getCustomers().subscribe(data => {
+      this.customerList = data['customer'];
+      console.log(this.customerList);
     });
   }
 
@@ -76,31 +78,31 @@ export class RegisterComponent implements OnInit {
   nextStep(value) {
     if (value === 'peronsal_info') {
       if (this.registerForm.controls.full_name.valid && this.registerForm.controls.dob.valid) {
-        this.personalInfo = false;
-        this.credentialInfo = true;
-        this.passwordInfo = false;
-        this.errorMessage = false;
+        document.getElementById("step1").classList.add("step_after_success");
+        setTimeout(() => {
+          this.personalInfo = false;
+          this.credentialInfo = true;
+        }, 300);
       } else {
         this.errorMessage = true;
         return false;
       }
-    } else if (value === 'credential_info') {
-      for (let customers of this.customerList) {
-        if ((this.registerForm.value.username === customers['username'])) {
-          this.credentialInfo = true;
-          this.passwordInfo = false;
+    } else if (value === "credential_info") {
+      for (let customer of this.customerList) {
+        if (this.registerForm.value.username === customer['username']) {
           this.usernameError = true;
-        } else if ((this.registerForm.value.email === customers['email'])) {
-          this.credentialInfo = true;
-          this.passwordInfo = false;
+          return false;
+        } else if (this.registerForm.value.email === customer['email']) {
           this.emailError = true;
+          return false;
         } else if (this.registerForm.controls.username.valid && this.registerForm.controls.email.valid) {
-          this.personalInfo = false;
-          this.credentialInfo = false;
-          this.passwordInfo = true;
-          this.errorMessage = false;
-          this.usernameError = false;
-          this.emailError = false;
+          document.getElementById("step2").classList.add("step_after_success");
+          setTimeout(() => {
+            this.usernameError = false;
+            this.emailError = false;
+            this.credentialInfo = false;
+            this.passwordInfo = true;
+          }, 300)
         } else {
           this.errorMessage = true;
           return false;

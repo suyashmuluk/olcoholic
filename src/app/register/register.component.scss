@@ -82,12 +82,29 @@
       justify-content: center;
       font-weight: bold;
       box-shadow: 1px 3px 8px #cecece;
+      transition: all 0.3s ease-in;
       position: relative;
 
-      &_title {
-        line-height: 18px;
-        margin-top: 4px;
+      &:after {
+        content: "";
+        position: absolute;
+        left: 30px;
+        width: 0px;
+        height: 3px;
+        background-color: forestgreen;
+        transition: all 0.3s ease-in;
       }
+    }
+
+    .register__box_step_last {
+      &:after {
+        display: none;
+      }
+    }
+
+    &_title {
+      line-height: 20px;
+      margin-top: 4px;
     }
   }
 
@@ -109,6 +126,15 @@
       font-size: 13px;
       color: #e74c3c;
       font-weight: bold;
+    }
+
+    &_hint {
+      font-size: 13px;
+      font-weight: bold;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     &_btn_container {
@@ -178,4 +204,20 @@
 .stepActive {
   background-color: limegreen;
   color: #fff;
+}
+
+.step_after_success {
+  color: #fff;
+  background-color: forestgreen;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 30px;
+    width: 100px;
+    height: 3px;
+    background-color: forestgreen;
+    transition: all 0.3s ease-in;
+  }
 }

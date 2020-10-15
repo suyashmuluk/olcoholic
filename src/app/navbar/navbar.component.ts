@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   isLoggedin = false;
+  username = '';
 
   constructor() { }
 
@@ -18,6 +19,7 @@ export class NavbarComponent implements OnInit {
   getUserLoginData() {
     if (localStorage.getItem('registrationData') || localStorage.getItem('temporaryUserData')) {
       this.isLoggedin = true;
+      this.username = localStorage.getItem('registrationData') || localStorage.getItem('temporaryUserData');
     }
   }
 
@@ -32,6 +34,13 @@ export class NavbarComponent implements OnInit {
     document.querySelector(".custom_navbar__hamburger_line1").classList.toggle("line1");
     document.querySelector(".custom_navbar__hamburger_line2").classList.toggle("line2");
     document.querySelector(".custom_navbar__hamburger_line3").classList.toggle("line3");
+  }
+
+  logOut() {
+    localStorage.removeItem('registrationData');
+    localStorage.removeItem('temporaryUserData');
+    window.location.reload();
+    this.isLoggedin = false;
   }
 
 }

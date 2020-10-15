@@ -1,75 +1,7 @@
 <app-navbar></app-navbar>
-<div id="sidebar" class="sidebar">
-    <div class="sidebar__toggle">
-        <span class="material-icons sidebar__toggle_icon" (click)="toggleSidebar('open')"
-            *ngIf="!sidebarListItems">arrow_forward</span>
-        <span class="material-icons sidebar__toggle_icon" (click)="toggleSidebar('close')"
-            *ngIf="sidebarListItems">close</span>
-    </div>
-    <div class="sidebar__profile" *ngIf="isLoggedin">
-        <div class="sidebar__profile_logo">
-            {{username.charAt(0) | uppercase}}
-        </div>
-        <div class="sidebar__profile_name" *ngIf="sidebarListItems">
-            <span matTooltip="{{username}}">{{username.substring(0, 6)}}</span>
-            <span *ngIf="username.length > 6">..</span>
-            <span class="material-icons sidebar__profile_icon">edit</span>
-        </div>
-    </div>
-
-    <div class="sidebar_list">
-        <div class="sidebar_list_item">
-            <i class="fas fa-beer sidebar_list_item-icon"></i>
-            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Beer</span>
-        </div>
-
-        <div class="sidebar_list_item">
-            <span class="material-icons sidebar_list_item-icon">wine_bar</span>
-            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Wine</span>
-        </div>
-
-        <div class="sidebar_list_item">
-            <i class="fas fa-wine-bottle sidebar_list_item-icon"></i>
-            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Vodka</span>
-        </div>
-
-        <div class="sidebar_list_item">
-            <i class="fas fa-glass-whiskey sidebar_list_item-icon"></i>
-            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Whiskey</span>
-        </div>
-
-        <div class="sidebar_list_item">
-            <i class="fas fa-cocktail sidebar_list_item-icon"></i>
-            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Rum</span>
-        </div>
-
-        <div class="sidebar_list_item" *ngIf="isLoggedin" routerLink="/recent-shopping">
-            <span class="material-icons sidebar_list_item-icon">check_circle</span>
-            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Recent Shopping</span>
-        </div>
-
-        <div class="sidebar_list_item" *ngIf="isLoggedin" routerLink="/favorites">
-            <span class="material-icons sidebar_list_item-icon">favorite</span>
-            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Favorites</span>
-        </div>
-
-        <div class="sidebar_list_item" *ngIf="isLoggedin" routerLink="/my-basket">
-            <div class="sidebar_list_item_badge">
-                <div class="sidebar_list_item_badge-text">2</div>
-            </div>
-            <span class="material-icons sidebar_list_item-icon">shopping_basket</span>
-            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">My Basket</span>
-        </div>
-
-        <div class="sidebar_list_item" *ngIf="isLoggedin" (click)="logOut()">
-            <span class="material-icons sidebar_list_item-icon">power_settings_new</span>
-            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Log out</span>
-        </div>
-    </div>
-</div>
-
+<app-sidebar></app-sidebar>
 <div class="product_section">
-    <div class="row" style="align-items: baseline;">
+    <div class="row" style="align-items: baseline;" *ngIf="products.length > 1">
         <div class="col-lg-6 col-md-6 col-3">
             <div class="filter_box">
                 <span class="filter_box_text">Filter</span>
@@ -79,21 +11,25 @@
         <div class="col-lg-6 col-md-6 col-9">
             <div class="search_bar">
                 <form>
-                    <mat-form-field class="search_bar_input" appearance="outline">
-                        <input type="text" matInput placeholder="Search your product">
-                    </mat-form-field>
-                    <!-- <div class="form-group">
-                        <input style="width: 60%; margin-left: auto" class="form-control" type="search"
-                            placeholder="Search your product">
+                    <!-- <mat-form-field class="search_bar_input" appearance="outline">
+                        <input type="text" matInput placeholder="Search your product" [(ngModel)]="productSearch"
+                            [ngModelOptions]="{standalone: true}">
+                        <mat-icon matSuffix>search</mat-icon>
+                    </mat-form-field> -->
+
+                    <div class="form-group" style="position: relative">
+                        <input class="form-control search_bar_input" type="text" [(ngModel)]="productSearch"
+                            [ngModelOptions]="{standalone: true}" placeholder="Search your product">
                         <span class="material-icons search_bar-icon">search</span>
-                    </div> -->
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-    <div class="product_cards_container">
-        <div class="product_card" *ngFor="let product of products">
-            <div class="product_card__wishlist" matTooltip="Add to Wishlist" (click)="addToWishlist()">
+
+    <div class="product_cards_container" *ngIf="products.length >= 1">
+        <div class="product_card" *ngFor="let product of products | filter: productSearch">
+            <div class="product_card__wishlist" matTooltip="Add to Wishlist">
                 <span class="material-icons product_card__wishlist-icon">favorite</span>
             </div>
             <div class="product_card__share">
@@ -115,11 +51,16 @@
                         <span>Order Now</span>
                     </button>
                 </div>
-                <div class="product_card__link">
+                <div class="product_card__link" (click)="addToBasket(product)">
                     <span class="material-icons" style="margin-right: .5rem">shopping_basket</span>
                     <span class="product_card__link_text">Add to Basket</span>
                 </div>
             </div>
         </div>
     </div>
+    <div class="not_found_section" *ngIf="products.length < 1">
+        <div class="not_found_section_img"></div>
+        <div class="not_found_section_text">No Product Found</div>
+    </div>
+
 </div>
