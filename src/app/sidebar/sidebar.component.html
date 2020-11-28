@@ -17,51 +17,51 @@
     </div>
 
     <div class="sidebar_list">
-        <div class="sidebar_list_item">
+        <div class="sidebar_list_item" routerLink="/products">
             <i class="fas fa-beer sidebar_list_item-icon"></i>
             <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Beer</span>
         </div>
 
-        <div class="sidebar_list_item">
-            <span class="material-icons sidebar_list_item-icon">wine_bar</span>
+        <div class="sidebar_list_item" routerLink="/products">
+            <span class="material-icons">wine_bar</span>
             <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Wine</span>
         </div>
 
-        <div class="sidebar_list_item">
+        <div class="sidebar_list_item" routerLink="/products">
             <i class="fas fa-wine-bottle sidebar_list_item-icon"></i>
             <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Vodka</span>
         </div>
 
-        <div class="sidebar_list_item">
+        <div class="sidebar_list_item" routerLink="/products">
             <i class="fas fa-glass-whiskey sidebar_list_item-icon"></i>
             <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Whiskey</span>
         </div>
 
-        <div class="sidebar_list_item">
+        <div class="sidebar_list_item" routerLink="/products">
             <i class="fas fa-cocktail sidebar_list_item-icon"></i>
             <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Rum</span>
         </div>
 
         <div class="sidebar_list_item" *ngIf="isLoggedin" routerLink="/recent-shopping" routerLinkActive="link-active">
-            <span class="material-icons sidebar_list_item-icon">check_circle</span>
+            <span class="material-icons">check_circle</span>
             <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Recent Shopping</span>
         </div>
 
         <div class="sidebar_list_item" *ngIf="isLoggedin" routerLink="/favorites" routerLinkActive="link-active">
-            <span class="material-icons sidebar_list_item-icon">favorite</span>
+            <span class="material-icons">favorite</span>
             <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Favorites</span>
         </div>
 
         <div class="sidebar_list_item" *ngIf="isLoggedin" routerLink="/my-basket" routerLinkActive="link-active">
             <div class="sidebar_list_item_badge">
-                <div class="sidebar_list_item_badge-text">2</div>
+                <div class="sidebar_list_item_badge-text">{{basketLength}}</div>
             </div>
-            <span class="material-icons sidebar_list_item-icon">shopping_basket</span>
+            <span class="material-icons">shopping_basket</span>
             <span class="sidebar_list_item_text" *ngIf="sidebarListItems">My Basket</span>
         </div>
 
         <div class="sidebar_list_item" *ngIf="isLoggedin" (click)="logOut()">
-            <span class="material-icons sidebar_list_item-icon">power_settings_new</span>
+            <span class="material-icons">power_settings_new</span>
             <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Log out</span>
         </div>
     </div>

@@ -3,9 +3,39 @@
 <div class="product_section">
     <div class="row" style="align-items: baseline;" *ngIf="products.length > 1">
         <div class="col-lg-6 col-md-6 col-3">
-            <div class="filter_box">
+            <div class="filter_box" (click)="toggleFilterBox()">
                 <span class="filter_box_text">Filter</span>
                 <span class="material-icons filter_box-icon">filter_alt</span>
+                <div class="filter_box_options" *ngIf="filterBox">
+                    <div class="filter_box_options_group">
+                        <div class="filter_box_options_title">
+                            Price:
+                        </div>
+                        <div class="filter_box_options_list">
+                            Low to High
+                        </div>
+                        <div class="filter_box_options_list">
+                            High to Low
+                        </div>
+                    </div>
+                    <div class="filter_box_options_group">
+                        <div class="filter_box_options_title">
+                            Range:
+                        </div>
+                        <div class="filter_box_options_list">
+                            Rs. 100 - 300
+                        </div>
+                        <div class="filter_box_options_list">
+                            Rs. 300 - 700
+                        </div>
+                        <div class="filter_box_options_list">
+                            Rs. 700 - 1000
+                        </div>
+                        <div class="filter_box_options_list">
+                            Rs. 1000 - 1500
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-9">
@@ -19,7 +49,7 @@
 
                     <div class="form-group" style="position: relative">
                         <input class="form-control search_bar_input" type="text" [(ngModel)]="productSearch"
-                            [ngModelOptions]="{standalone: true}" placeholder="Search your product">
+                            [ngModelOptions]="{standalone: true}" placeholder="Search by product name">
                         <span class="material-icons search_bar-icon">search</span>
                     </div>
                 </form>

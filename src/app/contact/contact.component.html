@@ -1,1 +1,95 @@
-<p>contact works!</p>
+<app-navbar></app-navbar>
+<div class="body_container">
+    <div class="contact__header">
+        <div class="contact__header_title">
+            Contact Olcoholic's Team
+        </div>
+        <div class="contact__header_subtitle">
+            We are glad that you want to stay connected with us
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-12">
+            <div class="contact__links_container">
+                <div class="contact__links">
+                    <span class="material-icons contact__links-icon">mail_outline</span>
+                    <span class="contact__links_text">
+                        <a href="mailto:suyash.muluk04@gmail.com">
+                            customercare@olcoholic.in
+                        </a>
+                    </span>
+                </div>
+                <div class="contact__links">
+                    <span class="material-icons contact__links-icon">call</span>
+                    <span class="contact__links_text">
+                        <a href="tel:+7738765774">
+                            7738765774
+                        </a>
+                    </span>
+                </div>
+                <div class="contact__links">
+                    <span class="material-icons contact__links-icon">location_on</span>
+                    <span class="contact__links_text">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus, architecto qui! Odit porro
+                        necessitatibus aperiam id placeat voluptates aspernatur delectus!
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-12">
+            <div class="form__card">
+                <div class="form__card_title">
+                    Contact Us
+                </div>
+                <form [formGroup]="contactForm">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-12">
+                            <mat-form-field class="w-100">
+                                <mat-label>Name</mat-label>
+                                <input type="text" matInput formControlName="name">
+                                <mat-error>Please enter your name</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-12">
+                            <!-- <mat-form-field class="w-100">
+                                <mat-label>Phone</mat-label>
+                                <input type="text" matInput formControlName="phone">
+                                <mat-error>Please enter your phone number</mat-error>
+                            </mat-form-field> -->
+                            <mat-form-field class="w-100">
+                                <ngx-mat-intl-tel-input [preferredCountries]="['in']" [enablePlaceholder]="true"
+                                    [enableSearch]="true" name="phone" formControlName="phone" #phone>
+                                </ngx-mat-intl-tel-input>
+                                <mat-hint>e.g.{{phone.selectedCountry.placeHolder}}</mat-hint>
+                                <mat-error *ngIf="contactFormControls.phone.errors?.required">Please enter your phone
+                                    number</mat-error>
+                                <mat-error *ngIf="contactFormControls.phone.errors?.validatePhoneNumber">Invalid Number
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-12">
+                            <mat-form-field class="w-100">
+                                <mat-label>Email</mat-label>
+                                <input type="text" matInput formControlName="email">
+                                <mat-error>Please enter your email</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-12">
+                            <mat-form-field class="w-100">
+                                <mat-label>Message</mat-label>
+                                <textarea type="text" matInput formControlName="message"></textarea>
+                                <mat-error>Please suggest us something</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-12 text-right">
+                            <button class="form__card_btn" (click)="submitContactForm()">
+                                <span class="form__card_btn_text">Submit</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

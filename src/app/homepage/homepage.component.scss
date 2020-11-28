@@ -13,14 +13,18 @@
 
 .hero_container {
   margin-top: 80px;
+  scroll-snap-type: y mandatory;
 }
 
 .landing_page {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("../../assets/olcoholic_images/landing_page.jpg");
   height: calc(100vh - 80px);
+  width: 100%;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
 
@@ -109,7 +113,15 @@
 }
 
 .body_container {
-  @extend .landing_page__title_container;
+  padding: 0 80px 2rem;
+
+  @include for_size(ipad) {
+    padding: 0 32px 2rem;
+  }
+
+  @include for_size(phone) {
+    padding: 0 20px 2rem;
+  }
 }
 
 .product_cards_container {
@@ -245,6 +257,121 @@
           }
         }
       }
+    }
+  }
+}
+
+.customer__review {
+  margin: 100px 0;
+
+  &_header {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 48px;
+  }
+
+  &_box {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #cecece;
+    padding: 24px;
+    margin-bottom: 30px;
+
+    &_text {
+      font-size: 18px;
+      text-align: justify;
+
+      &::first-letter {
+        font-size: 32px;
+        text-transform: uppercase;
+      }
+    }
+
+    &_subtext {
+      font-weight: bold;
+      font-size: 15px;
+      margin-top: 8px;
+    }
+  }
+
+  &_btn {
+    @extend .product_section-view_all_btn;
+  }
+}
+
+.contact_section {
+  height: calc(100vh - 80px);
+  display: flex;
+
+  &_info {
+    background-color: #2e8b57;
+    padding: 5rem 0 5rem 80px;
+    height: calc(100vh - 80px);
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include for_size(phone) {
+      width: 100%;
+      padding: 5rem 0 5rem 20px;
+    }
+
+    &_title {
+      color: #fff;
+      margin-bottom: 32px;
+      font-size: 18px;
+      position: relative;
+      font-weight: bold;
+      display: inline-flex;
+      padding-left: 30px;
+
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 2px;
+        background-color: #fff;
+      }
+    }
+
+    &_title-lg {
+      color: #fff;
+      margin-bottom: 16px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      line-height: 50px;
+
+      @include for_size(phone) {
+        font-size: 2rem;
+      }
+    }
+
+    &_subtitle {
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    &_btn {
+      @extend .landing_page__btn;
+      margin: 0;
+      border-radius: 0;
+      width: fit-content;
+    }
+  }
+
+  &_image {
+    background: url("../../assets/olcoholic_images/contact1.jpg") no-repeat
+      center;
+    width: 50%;
+    height: 100%;
+    background-size: contain;
+
+    @include for_size(phone) {
+      display: none;
     }
   }
 }

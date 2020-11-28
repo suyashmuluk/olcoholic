@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   getUserLoginData() {
     if (localStorage.getItem('registrationData') || localStorage.getItem('temporaryUserData')) {
       this.isLoggedin = true;
-      this.username = localStorage.getItem('registrationData') || localStorage.getItem('temporaryUserData');
+      this.username = localStorage.getItem('registrationData') || JSON.parse(localStorage.getItem('temporaryUserData')).username;
     }
   }
 

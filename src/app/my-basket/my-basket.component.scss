@@ -1,0 +1,36 @@
+@mixin for_size($size) {
+  @if $size == phone {
+    @media only screen and (max-width: 767px) and (min-width: 320px) {
+      @content;
+    }
+  }
+  @if $size == ipad {
+    @media only screen and (max-width: 991px) and (min-width: 768px) {
+      @content;
+    }
+  }
+}
+
+.empty_cart_section {
+  padding: 100px 0 0 80px;
+
+  @include for_size(phone) {
+    padding: 100px 0 0 20px;
+  }
+
+  &_img {
+    background-image: url("../../assets/olcoholic_images/empty-cart.jpg");
+    height: 70vh;
+    width: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &_text {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+}

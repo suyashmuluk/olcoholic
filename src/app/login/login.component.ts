@@ -14,8 +14,10 @@ export class LoginComponent implements OnInit {
   customerList = [];
   errorMessage = false;
   usernameError = false;
+  passwordError = false;
   openEye = true;
   inputType = 'password';
+  customer: any;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private customerService: CustomerService) { }
 
@@ -46,10 +48,13 @@ export class LoginComponent implements OnInit {
         isInvalid: true
       });
     } else {
-      this.customerService.loginCustomer({ username: this.loginForm.value.username, password: this.loginForm.value.password }).subscribe(() => {
-        console.log("login successful");
+      this.customerService.loginCustomer({ username: this.loginForm.value.username, password: this.loginForm.value.password }).subscribe((data) => {
+        this.customer = data['customer'];
+        console.log(this.customer);
+        // localStorage.setItem('temporaryUserData', this.loginForm.value.username);
+        localStorage.setItem('temporaryUserData', JSON.stringify(this.customer));
+        this.router.navigate(['/']);
       });
-      localStorage.setItem('temporaryUserData', this.loginForm.value.username);
     }
   }
 }

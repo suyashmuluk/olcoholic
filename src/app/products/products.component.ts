@@ -15,14 +15,13 @@ export class ProductsComponent implements OnInit {
   products = [];
   isLoggedin = false;
   custId: string;
-  randomId = "";
+  filterBox = false;
 
   constructor(private getProduct: GetproductsService, private router: Router, private snackBar: MatSnackBar, private basketService: BasketService) { }
 
   ngOnInit(): void {
     this.getproductList();
     this.getUserLoginData();
-    this.generateId();
   }
 
   getproductList() {
@@ -38,20 +37,18 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  generateId() {
-    this.randomId = "ol" + Math.random().toString(36).substring(2, 8);
-    console.log(this.randomId);
+  toggleFilterBox() {
+    this.filterBox = !this.filterBox;
   }
 
+
   addToBasket(value) {
-    const productInfo = {
-      id: value.id,
-      name: value.name,
-      desc: value.description,
-      price: value.price
-    }
     if (this.isLoggedin) {
-      this.basketService.addBasketProduct(this.randomId, productInfo).subscribe(() => { })
+      this.basketService.addBasketProduct(JSON.parse(localStorage.getItem('temporaryUserData')).username, {
+        name: value.name,
+        description: value.description,
+        price: value.price
+      }).subscribe(() => { })
       console.log("added to basket");
     } else {
       const unsuccessRef = this.snackBar.open("You are not logged in or Registered yet", "OK", {

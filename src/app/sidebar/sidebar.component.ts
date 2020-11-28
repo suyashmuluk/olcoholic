@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BasketService } from '../shared/basket.service';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -10,18 +12,26 @@ export class SidebarComponent implements OnInit {
   sidebarListItems = false;
   username = '';
   isLoggedin = false;
+  basketLength: any;
 
-  constructor() { }
+  constructor(private basketService: BasketService) { }
 
   ngOnInit(): void {
     this.getUserLoginData();
+    this.getBasketProduct();
   }
 
   getUserLoginData() {
-    if (localStorage.getItem('registrationData') || localStorage.getItem('temporaryUserData')) {
+    if (JSON.parse(localStorage.getItem('temporaryUserData')) || localStorage.getItem('registrationData')) {
       this.isLoggedin = true;
-      this.username = localStorage.getItem('registrationData') || localStorage.getItem('temporaryUserData');
+      this.username = JSON.parse(localStorage.getItem('temporaryUserData')).username || JSON.parse(localStorage.getItem('registrationData')).username;
     }
+  }
+
+  getBasketProduct() {
+    this.basketService.getBasketProducts(JSON.parse(localStorage.getItem('temporaryUserData')).username).subscribe(data => {
+      this.basketLength = data['basket'].length;
+    })
   }
 
   toggleSidebar(value) {

@@ -20,7 +20,7 @@
   background-color: #fff;
   box-shadow: 1px 3px 5px #cecece;
   color: #c70039;
-  z-index: 2;
+  z-index: 3;
   transition: all 0.4s linear;
 
   @include for_size(phone) {
@@ -46,20 +46,20 @@
     padding: 8px 14px 0;
 
     &_logo {
-      height: 50px;
-      width: 50px;
+      height: 40px;
+      width: 40px;
       border-radius: 50%;
       box-shadow: 1px 3px 8px #cecece;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: bold;
     }
 
     &_name {
       margin-left: 0.5rem;
-      font-size: 1.5rem;
+      font-size: 20px;
       display: flex;
       align-items: center;
     }
@@ -73,10 +73,12 @@
 
   &_list {
     margin-top: 8px;
+    padding: 8px;
 
     &_item {
       position: relative;
-      padding: 8px 0 8px 23px;
+      padding: 8px 0 8px 15px;
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -90,21 +92,21 @@
 
       &:hover {
         cursor: pointer;
-        background: rgb(255, 199, 215);
-        background: linear-gradient(
-          297deg,
-          rgba(255, 199, 215, 1) 38%,
-          rgba(255, 160, 171, 1) 100%
-        );
-      }
-
-      &-icon {
-        font-size: 30px;
+        background: #f7f7f7;
+        // background: linear-gradient(
+        //   297deg,
+        //   rgba(255, 199, 215, 1) 38%,
+        //   rgba(255, 160, 171, 1) 100%
+        // );
       }
 
       &_text {
-        font-size: 18px;
+        font-size: 16px;
         margin-left: 8px;
+      }
+
+      &-icon {
+        font-size: 24px;
       }
 
       &_badge {

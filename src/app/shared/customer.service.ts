@@ -29,12 +29,12 @@ export class CustomerService {
     return this.dbConnect.patch(`customers/${id}`, data);
   }
 
-  buyProduct(id: string, data: object) {
-    return this.dbConnect.post(`customers/${id}`, data);
+  getCustomersReview() {
+    return this.dbConnect.get('reviews');
   }
 
-  getbuyProducts(id: string) {
-    return this.dbConnect.get(`customers/${id}`);
+  addReview(data: object) {
+    return this.dbConnect.post(`reviews`, data);
   }
 
 }

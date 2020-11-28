@@ -34,6 +34,8 @@ import { RecentShoppingComponent } from './recent-shopping/recent-shopping.compo
 import { MyBasketComponent } from './my-basket/my-basket.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { NgxMatIntlTelInputModule } from 'ngx-mat-intl-tel-input';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     RecentShoppingComponent,
     MyBasketComponent,
     FavoritesComponent,
-    SidebarComponent
+    SidebarComponent,
+    FilterPipe
   ],
   entryComponents: [
     DialogComponent
@@ -77,7 +80,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     ReactiveFormsModule,
     MatTooltipModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgxMatIntlTelInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

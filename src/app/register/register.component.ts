@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
   openEye = true;
   openEyeConf = true;
   customerList = [];
+  customer: any;
   idString = "ol";
   randomId = "";
 
@@ -129,9 +130,11 @@ export class RegisterComponent implements OnInit {
         isInvalid: true
       });
     } else {
-      localStorage.setItem('registrationData', this.registerForm.value.username);
-      this.router.navigate(['/']);
-      this.customerService.addCustomer(this.registerForm.value).subscribe(() => {
+      this.customerService.addCustomer(this.registerForm.value).subscribe((data) => {
+        this.customer = data['customer'];
+        console.log(this.customer);
+        localStorage.setItem('registrationData', JSON.stringify(this.customer));
+        this.router.navigate(['/']);
       });
     }
   }

@@ -33,7 +33,7 @@ $color: (
   display: flex;
   align-items: center;
   padding: 0 5rem;
-  z-index: 3;
+  z-index: 4;
 
   @include for_size(ipad) {
     padding: 0 2rem;
@@ -56,13 +56,18 @@ $color: (
   }
 
   &__profile {
-    display: none;
+    // display: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 80px;
 
     @include for_size(phone) {
       display: flex;
       align-items: center;
       position: absolute;
-      right: 16%;
+      top: 0;
+      right: 60px;
       z-index: 4;
     }
 
@@ -88,20 +93,43 @@ $color: (
 
     &_menu {
       position: absolute;
-      top: 40px;
+      top: 70px;
       left: 50%;
       transform: translateX(-50%);
+      width: 200px;
+      padding: 24px 8px;
+      box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.1);
+      background-clip: padding-box;
       background-color: #fff;
-      width: 150px;
-      border-radius: 4px;
-      box-shadow: 1px 3px 8px #cecece;
+      border-radius: 8px;
       visibility: hidden;
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -6px;
+        border-right: 6px solid transparent;
+        border-left: 6px solid transparent;
+        border-bottom: 6px solid #fff;
+      }
 
       &_items {
         display: flex;
         align-items: center;
-        margin: 4px 0;
-        padding: 2px 4px;
+        padding: 8px 16px;
+        border-radius: 4px;
+
+        &:hover {
+          cursor: pointer;
+          background: #f7f7f7;
+          // background: linear-gradient(
+          //   297deg,
+          //   rgba(255, 199, 215, 1) 38%,
+          //   rgba(255, 160, 171, 1) 100%
+          // );
+        }
 
         &-icon {
           font-size: 20px;
@@ -112,21 +140,6 @@ $color: (
           font-size: 15px;
           color: #c70039;
           margin-left: 2px;
-        }
-
-        &-profile {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid #464242;
-          border-radius: 30px;
-          margin: 12px 0 4px;
-        }
-
-        &-link {
-          display: flex;
-          align-items: center;
-          justify-content: center;
         }
       }
     }
@@ -276,4 +289,3 @@ $color: (
     rgba(255, 160, 171, 1) 100%
   );
 }
-

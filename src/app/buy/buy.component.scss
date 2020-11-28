@@ -168,6 +168,51 @@
       box-shadow: 3px 3px 5px #cecece;
     }
   }
+
+  &__review {
+    &_header {
+      @extend .product__form_header;
+    }
+
+    &_box {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px #cecece;
+      padding: 24px;
+      margin-bottom: 1rem;
+
+      &_text {
+        font-size: 18px;
+        text-align: justify;
+      }
+
+      &_subtext {
+        font-weight: bold;
+        font-size: 15px;
+        margin-top: 8px;
+      }
+    }
+
+    &_btn {
+      @extend .product__btn;
+      padding: 8px 24px;
+      font-size: 16px;
+      margin-top: 8px;
+    }
+  }
+
+  &__review_add {
+    margin-top: 2rem;
+    &_header {
+      @extend .product__form_header;
+    }
+
+    &_btn {
+      @extend .product__btn;
+      padding: 8px 24px;
+      font-size: 16px;
+    }
+  }
 }
 
 mat-form-field {
