@@ -11,6 +11,145 @@
   }
 }
 
+.product_section {
+  padding: 100px 0 0 100px;
+
+  @include for_size(phone) {
+    padding: 100px 20px 0 20px;
+  }
+}
+
+.product_cards_container {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+  .product_card {
+    box-shadow: 1px 1px 3px #cecece;
+    border-radius: 4px;
+    width: 300px;
+    position: relative;
+    margin: 0 auto 1rem;
+    transition: all 0.3s ease-in;
+
+    @include for_size(phone) {
+      max-width: none;
+    }
+
+    &__wishlist {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+
+      &-icon {
+        transition: all 0.2s ease-in;
+        &:hover {
+          color: orangered;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__share {
+      position: absolute;
+      top: 2.4rem;
+      right: 5px;
+
+      &-icon {
+        transition: all 0.2s ease-in;
+        &:hover {
+          color: dodgerblue;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__image {
+      background: url("../../assets/olcoholic_images/budweiser1.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 280px;
+      width: 100%;
+    }
+
+    &__desc {
+      padding: 8px 20px;
+    }
+
+    &__title {
+      text-transform: capitalize;
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    &__info {
+      font-size: 15px;
+    }
+
+    &__price {
+      margin-top: 0.5rem;
+
+      &_text {
+        font-size: 15px;
+      }
+
+      &_info {
+        color: #c70039;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+
+    &__btn {
+      width: 90%;
+      border: 0;
+      border-radius: 5px;
+      background-color: #c70039;
+      color: #fff;
+      font-weight: 600;
+      font-size: 18px;
+      padding: 8px 20px;
+      margin-top: 1rem;
+      box-shadow: 1px 1px 3px #a2a2a2;
+      transition: all 0.3s ease-in;
+
+      &:hover {
+        background-color: #b30033;
+        box-shadow: 1px 1px 5px #8f8f8f;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &__btn_secondary {
+      width: 90%;
+      border: 0;
+      border-radius: 5px;
+      background-color: #fff;
+      color: #c70039;
+      border: 2px solid #c70039;
+      font-weight: 600;
+      font-size: 18px;
+      padding: 4px 20px;
+      margin-top: 1rem;
+      box-shadow: 1px 1px 3px #a2a2a2;
+      transition: all 0.3s ease-in;
+
+      &:hover {
+        box-shadow: 1px 1px 5px #8f8f8f;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
 .empty_cart_section {
   padding: 100px 0 0 80px;
 
@@ -20,7 +159,7 @@
 
   &_img {
     background-image: url("../../assets/olcoholic_images/empty-cart.jpg");
-    height: 70vh;
+    height: 55vh;
     width: 100%;
     background-size: contain;
     background-position: center;
@@ -32,5 +171,39 @@
     margin-top: 1.5rem;
     font-size: 2.5rem;
     font-weight: bold;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    border: 0;
+    border-radius: 5px;
+    background-color: #c70039;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 8px 20px;
+    margin: 1rem auto;
+    box-shadow: 0px 0px 3px #c70039;
+    transition: all 0.3s ease-in;
+
+    &-icon {
+      margin-left: 4px;
+      font-weight: bold;
+      transition: all 0.3s ease-in;
+    }
+
+    &:hover {
+      background-color: #b30033;
+      box-shadow: 0px 0px 5px #c70039;
+
+      .empty_cart_section__btn-icon {
+        transform: translateX(8px);
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
 }

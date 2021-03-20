@@ -16,6 +16,7 @@ export class ProductsComponent implements OnInit {
   isLoggedin = false;
   custId: string;
   filterBox = false;
+  basket: any;
 
   constructor(private getProduct: GetproductsService, private router: Router, private snackBar: MatSnackBar, private basketService: BasketService) { }
 
@@ -48,20 +49,30 @@ export class ProductsComponent implements OnInit {
         name: value.name,
         description: value.description,
         price: value.price
-      }).subscribe(() => { })
-      console.log("added to basket");
+      }).subscribe(data => {
+        this.basketProduct();
+        this.snackBar.open(data['basket']['name'] + " is added to basket", "OK", {
+          duration: 2000
+        });
+      })
     } else {
-      const unsuccessRef = this.snackBar.open("You are not logged in or Registered yet", "OK", {
+      this.snackBar.open("You are not logged in or Registered yet", "OK", {
         duration: 2000
       });
       this.router.navigate(['/login']);
     }
   }
 
+  basketProduct() {
+    this.basketService.getBasketProducts(JSON.parse(localStorage.getItem('temporaryUserData')).username).subscribe(data => {
+      this.basket = data['basket'];
+    });
+  }
+
   buy(value) {
     this.router.navigate(['/buy'], {
       queryParams: {
-        id: value.id,
+        id: value._id,
         name: value.name,
         desc: value.description,
         price: value.price

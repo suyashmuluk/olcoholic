@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FilterPipe } from './pipes/filter.pipe';
+import { NgxMatIntlTelInputModule } from 'ngx-mat-intl-tel-input';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -34,8 +36,7 @@ import { RecentShoppingComponent } from './recent-shopping/recent-shopping.compo
 import { MyBasketComponent } from './my-basket/my-basket.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { FilterPipe } from './pipes/filter.pipe';
-import { NgxMatIntlTelInputModule } from 'ngx-mat-intl-tel-input';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { NgxMatIntlTelInputModule } from 'ngx-mat-intl-tel-input';
     MyBasketComponent,
     FavoritesComponent,
     SidebarComponent,
+    ProfileComponent,
     FilterPipe
   ],
   entryComponents: [

@@ -1,7 +1,44 @@
 <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
 
-<div class="empty_cart_section">
+<div class="product_section" *ngIf="basketProducts.length >= 1">
+    <div class="product_cards_container">
+        <div class="product_card" *ngFor="let product of basketProducts">
+            <div class="product_card__wishlist" matTooltip="Add to Wishlist">
+                <span class="material-icons product_card__wishlist-icon">favorite</span>
+            </div>
+            <div class="product_card__share">
+                <span class="material-icons product_card__share-icon">share</span>
+            </div>
+            <div class="product_card__image"></div>
+            <div class="product_card__desc">
+                <div class="product_card__title">{{product.name}}</div>
+                <div class="product_card__info">
+                    {{product.description}}
+                </div>
+                <div class="product_card__price">
+                    <span class="product_card__price_text">Rs. </span>
+                    <span class="product_card__price_info">{{product.price}}</span>
+                    <span>/-</span>
+                </div>
+                <div class="text-center">
+                    <button class="product_card__btn">
+                        <span>Order Now</span>
+                    </button>
+                    <button class="product_card__btn_secondary" (click)="deleteBasketProduct(product)">
+                        <span>Remove</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="empty_cart_section" *ngIf="basketProducts.length === 0">
     <div class="empty_cart_section_img"></div>
-    <div class="empty_cart_section_text">No items in basket</div>
+    <div class="empty_cart_section_text">No products in basket</div>
+    <button class="empty_cart_section__btn" routerLink="/products">
+        <span class="empty_cart_section__btn_text">Explore Products</span>
+        <span class="material-icons empty_cart_section__btn-icon">arrow_forward</span>
+    </button>
 </div>

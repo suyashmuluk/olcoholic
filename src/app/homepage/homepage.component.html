@@ -2,9 +2,9 @@
 <div class=hero_container>
     <div class="landing_page" id="landing_page">
         <div class="landing_page__title_container">
-            <div class="landing_page__title" data-aos="fade-up" data-aos-duration="1000">Yes,</div>
-            <div class="landing_page__title" data-aos="fade-up" data-aos-duration="1500">We serve liquor online...</div>
-            <button class="landing_page__btn" data-aos="fade-up" data-aos-duration="2000" routerLink="/products">
+            <div class="landing_page__title">Yes,</div>
+            <div class="landing_page__title">We serve liquor online...</div>
+            <button class="landing_page__btn" routerLink="/products">
                 <span class="landing_page__btn_text">Get Some Liquor</span>
                 <span class="material-icons landing_page__btn-icon">arrow_forward</span>
             </button>
@@ -14,8 +14,7 @@
     <div class="body_container">
         <div class="product_section">
             <div class="product_cards_container">
-                <div data-aos="fade-up" data-aos-duration="1000" class="product_card"
-                    *ngFor="let product of products | slice: 0:8">
+                <div class="product_card" *ngFor="let product of products | slice: 0:8">
                     <div class="product_card__wishlist" matTooltip="Add to Wishlist">
                         <span class="material-icons product_card__wishlist-icon">favorite</span>
                     </div>
@@ -57,10 +56,13 @@
                 <div class="customer__review_header">What customer talk about us?</div>
                 <div class="customer__review_container">
                     <div class="row">
-                        <div data-aos="fade-up" class="col-lg-6 col-md-6 col-12" *ngFor="let review of reviewList">
+                        <div data-aos="fade-up" class="col-lg-4 col-md-6 col-12"
+                            *ngFor="let review of reviewList | slice: 0 : 6">
                             <div class="customer__review_box">
+                                <!-- <div class="customer__review_box_absolute_line_vertical"></div> -->
+                                <div class="customer__review_box_absolute_line_horizontal"></div>
                                 <div class="customer__review_box_text">
-                                    {{review.message}}
+                                    <q>{{review.message}}</q>
                                 </div>
                                 <div class="customer__review_box_subtext">
                                     - {{review.name}}
@@ -69,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" *ngIf="reviewList.length > 4">
+                <div class="row" *ngIf="reviewList.length > 6">
                     <div class="col-lg-12 col-md-12 col-12 text-center">
                         <button class="customer__review_btn">
                             <span>View More Reviews</span>
@@ -82,23 +84,21 @@
     </div>
     <div class="contact_section">
         <div class="contact_section_info">
-            <div class="contact_section_info_title" data-aos="fade-right" data-aos-duration="1000">
+            <div class="contact_section_info_title">
                 Contact Us
             </div>
 
-            <div class="contact_section_info_title-lg" data-aos="fade-right" data-aos-duration="1500">
+            <div class="contact_section_info_title-lg">
                 Contact olcoholic's support team
             </div>
 
-            <div class="contact_section_info_subtitle" data-aos="fade-right" data-aos-duration="1500">
+            <div class="contact_section_info_subtitle">
                 Got a question? Or want to suggest us something
             </div>
 
-            <button class="contact_section_info_btn" data-aos="fade-right" data-aos-duration="1500"
-                routerLink="/contact">Contact Us</button>
+            <button class="contact_section_info_btn" routerLink="/contact">Contact Us</button>
         </div>
-        <div class="contact_section_image" data-aos="fade-left" data-aos-duration="1500">
-        </div>
+        <div class="contact_section_image"></div>
     </div>
 </div>
 <app-footer></app-footer>

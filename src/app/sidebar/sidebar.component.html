@@ -53,11 +53,16 @@
         </div>
 
         <div class="sidebar_list_item" *ngIf="isLoggedin" routerLink="/my-basket" routerLinkActive="link-active">
-            <div class="sidebar_list_item_badge">
+            <div class="sidebar_list_item_badge" *ngIf="basketLength > 0">
                 <div class="sidebar_list_item_badge-text">{{basketLength}}</div>
             </div>
             <span class="material-icons">shopping_basket</span>
             <span class="sidebar_list_item_text" *ngIf="sidebarListItems">My Basket</span>
+        </div>
+
+        <div class="sidebar_list_item" *ngIf="isLoggedin" routerLink="/my-profile" routerLinkActive="link-active">
+            <span class="material-icons">person</span>
+            <span class="sidebar_list_item_text" *ngIf="sidebarListItems">My Profile</span>
         </div>
 
         <div class="sidebar_list_item" *ngIf="isLoggedin" (click)="logOut()">

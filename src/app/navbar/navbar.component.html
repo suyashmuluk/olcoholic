@@ -8,7 +8,7 @@
             Services
         </li>
         <li class="custom_navbar__list_item">About</li>
-        <li class="custom_navbar__list_item">Contact</li>
+        <li class="custom_navbar__list_item" routerLink="/contact" routerLinkActive="navlink-active">Contact</li>
         <li class="custom_navbar__list_item" *ngIf="!isLoggedin">
             <div>
                 <button class="custom_navbar__list_item_btn" routerLink="/login">Login</button>

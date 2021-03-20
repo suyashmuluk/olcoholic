@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BasketService } from '../shared/basket.service';
-import Basket from '../models/basket';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-my-basket',
@@ -8,20 +8,28 @@ import Basket from '../models/basket';
   styleUrls: ['./my-basket.component.scss']
 })
 export class MyBasketComponent implements OnInit {
-  basket: Basket[];
-  prodId: string;
+  basketProducts = [];
 
-  constructor(private basketService: BasketService) { }
+  constructor(private basketService: BasketService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.basketProduct();
+    this.getBasketProduct();
   }
 
-  basketProduct() {
-    this.basketService.getBasketProducts(this.prodId).subscribe((basket: Basket[]) => {
-      this.basket = basket;
-      console.log(this.basket);
-    })
+  getBasketProduct() {
+    this.basketService.getBasketProducts(JSON.parse(localStorage.getItem('temporaryUserData')).username).subscribe(data => {
+      this.basketProducts = data['basket'];
+    });
+  }
+
+  deleteBasketProduct(value) {
+    this.basketService.deleteBasketProduct(JSON.parse(localStorage.getItem('temporaryUserData')).username, value._id).subscribe(() => {
+      this.getBasketProduct();
+      this.snackBar.open("Product removed from basket", "OK", {
+        duration: 2000
+      });
+    });
   }
 
 }

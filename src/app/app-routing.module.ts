@@ -10,6 +10,7 @@ import { BuyComponent } from './buy/buy.component';
 import { RecentShoppingComponent } from './recent-shopping/recent-shopping.component';
 import { MyBasketComponent } from './my-basket/my-basket.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'recent-shopping', component: RecentShoppingComponent },
   { path: 'my-basket', component: MyBasketComponent },
   { path: 'favorites', component: FavoritesComponent },
+  { path: 'my-profile', component: ProfileComponent }
 ];
 
 @NgModule({

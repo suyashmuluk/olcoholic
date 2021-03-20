@@ -56,7 +56,7 @@ export class ContactComponent implements OnInit {
       });
     } else {
       this.contactService.submitContactFormInfo(this.contactForm.value).subscribe(() => {
-
+        this.contactForm.reset();
       });
       const successRef = this.snackBar.open("Thanks for your opinion", "OK", { duration: 2000 })
     }

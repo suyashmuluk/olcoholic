@@ -1,2 +1,11 @@
 <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
+
+<div class="empty_cart_section" *ngIf="orders.length === 0">
+    <div class="empty_cart_section_img"></div>
+    <div class="empty_cart_section_text">You haven't ordered yet</div>
+    <button class="empty_cart_section__btn" routerLink="/products">
+        <span class="empty_cart_section__btn_text">Order Something</span>
+        <span class="material-icons empty_cart_section__btn-icon">arrow_forward</span>
+    </button>
+</div>

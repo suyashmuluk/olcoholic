@@ -84,7 +84,7 @@
       justify-content: flex-start;
       border-bottom: 1px solid #f7f7f7;
 
-      &:nth-child(9) {
+      &:last-child {
         position: absolute;
         bottom: 0px;
         width: 100%;
@@ -125,6 +125,7 @@
         &-text {
           color: #fff;
           font-weight: bold;
+          font-size: 11px;
         }
       }
     }

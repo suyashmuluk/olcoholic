@@ -9,6 +9,10 @@ export class OrderService {
   constructor(private dbConnect: DbconnectService) { }
 
   addOrder(id: string, data: object) {
-    return this.dbConnect.post(`customers/${id}/orders`, { data });
+    return this.dbConnect.post(`customers/${id}/orders`, data);
+  }
+
+  getOrders(id: string) {
+    return this.dbConnect.get(`customers/${id}/orders`);
   }
 }

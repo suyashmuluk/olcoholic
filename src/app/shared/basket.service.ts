@@ -13,7 +13,7 @@ export class BasketService {
   }
 
   addBasketProduct(id: string, data: object) {
-    return this.dbConnect.post(`customers/${id}/basket`, { data })
+    return this.dbConnect.post(`customers/${id}/basket`, data);
   }
 
   deleteBasketProduct(id: string, productId: string) {

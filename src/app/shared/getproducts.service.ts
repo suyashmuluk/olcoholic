@@ -24,4 +24,12 @@ export class GetproductsService {
   updateProductInfo(id: string, data: object) {
     return this.dbConnect.patch(`products/${id}`, data);
   }
+
+  getProductReview(id: string) {
+    return this.dbConnect.get(`products/${id}/review`);
+  }
+
+  addReview(id: string, data: object) {
+    return this.dbConnect.post(`products/${id}/review`, data);
+  }
 }

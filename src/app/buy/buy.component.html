@@ -127,8 +127,7 @@
                     </div>
                 </div>
             </div>
-        </form>
-        <form [formGroup]="paymentField">
+
             <div class="product__transaction">
                 <div class="product__transaction_header">Transaction</div>
                 <div>
@@ -187,12 +186,15 @@
         <div class="product__review">
             <div class="product__review_header">Customer reviews</div>
             <div class="product__review_container">
-                <div class="row">
+                <div class="product__review_null" *ngIf="reviews.length === 0">
+                    No reviews yet. Be the first reviewer
+                </div>
+                <div class="row" *ngIf="reviews.length !== 0">
                     <div data-aos="fade-up" class="col-lg-6 col-md-6 col-12"
                         *ngFor="let review of reviews | slice: 0 : 4">
                         <div class="product__review_box">
                             <div class="product__review_box_text">
-                                {{review.review}}
+                                {{review.description}}
                             </div>
                             <div class="product__review_box_subtext">
                                 - {{review.full_name}}
@@ -209,7 +211,7 @@
         </div>
 
         <div class="product__review_add">
-            <div class="product__review_add_header">Review this product</div>
+            <div class="product__review_add_header">Your review matters</div>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-12">
                     <form [formGroup]="reviewForm">

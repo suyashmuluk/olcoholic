@@ -139,7 +139,7 @@ $color: (
         &_text {
           font-size: 15px;
           color: #c70039;
-          margin-left: 2px;
+          margin-left: 4px;
         }
       }
     }
@@ -279,6 +279,11 @@ $color: (
   transform: rotate(132deg);
   position: relative;
   bottom: 7px;
+}
+
+.navlink-active {
+  color: #c70039;
+  font-weight: bold;
 }
 
 .link-active {
