@@ -37,7 +37,7 @@ export class ContactComponent implements OnInit {
   }
 
   getUserLoginData() {
-    if (localStorage.getItem('registrationData') || localStorage.getItem('temporaryUserData')) {
+    if (localStorage.getItem('temporaryUserData')) {
       this.isLoggedin = true;
     }
   }

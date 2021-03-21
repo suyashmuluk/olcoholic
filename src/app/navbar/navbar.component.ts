@@ -1,25 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
-
+export class NavbarComponent implements OnChanges {
+  @Input() basketProductsCount: number;
+  basketLength: any;
   isLoggedin = false;
   username = '';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getUserLoginData();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    for (let property in changes) {
+      if (property === 'basketProductsCount') {
+        this.basketLength = this.basketProductsCount;
+      }
+    }
+  }
+
   getUserLoginData() {
-    if (localStorage.getItem('registrationData') || localStorage.getItem('temporaryUserData')) {
+    if (localStorage.getItem('temporaryUserData')) {
       this.isLoggedin = true;
-      this.username = localStorage.getItem('registrationData') || JSON.parse(localStorage.getItem('temporaryUserData')).username;
+      this.username = JSON.parse(localStorage.getItem('temporaryUserData')).username;
     }
   }
 
@@ -37,8 +47,8 @@ export class NavbarComponent implements OnInit {
   }
 
   logOut() {
-    localStorage.removeItem('registrationData');
     localStorage.removeItem('temporaryUserData');
+    this.router.navigate(['/']);
     window.location.reload();
     this.isLoggedin = false;
   }

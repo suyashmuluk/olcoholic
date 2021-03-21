@@ -19,7 +19,6 @@ export class BuyComponent implements OnInit {
   totalPrice = 0;
   quantity = 1;
   buyProduct: FormGroup;
-  paymentField: FormGroup;
   reviewForm: FormGroup;
   isLoggedin = false;
   onlinePaymentSection = true;
@@ -50,7 +49,7 @@ export class BuyComponent implements OnInit {
   }
 
   getUserLoginData() {
-    if (localStorage.getItem('registrationData') || localStorage.getItem('temporaryUserData')) {
+    if (localStorage.getItem('temporaryUserData')) {
       this.isLoggedin = true;
       this.populateForm();
     }

@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
   confPasswordType = 'password';
   openEye = true;
   openEyeConf = true;
-  customerList = [];
+  customerList: any;
   customer: any;
   idString = "ol";
   randomId = "";
@@ -76,6 +76,24 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  checkCredentials(value) {
+    for (let customer of this.customerList) {
+      if (value === 'username') {
+        if (this.registerForm.value.username === customer['username']) {
+          this.usernameError = true;
+          this.credentialInfo = true;
+          this.passwordInfo = false;
+        }
+      } else if (value === 'email') {
+        if (this.registerForm.value.email === customer['email']) {
+          this.emailError = true;
+          this.credentialInfo = true;
+          this.passwordInfo = false;
+        }
+      }
+    }
+  }
+
   nextStep(value) {
     if (value === 'peronsal_info') {
       if (this.registerForm.controls.full_name.valid && this.registerForm.controls.dob.valid) {
@@ -86,28 +104,19 @@ export class RegisterComponent implements OnInit {
         }, 300);
       } else {
         this.errorMessage = true;
-        return false;
       }
     } else if (value === "credential_info") {
-      for (let customer of this.customerList) {
-        if (this.registerForm.value.username === customer['username']) {
-          this.usernameError = true;
-          return false;
-        } else if (this.registerForm.value.email === customer['email']) {
-          this.emailError = true;
-          return false;
-        } else if (this.registerForm.controls.username.valid && this.registerForm.controls.email.valid) {
-          document.getElementById("step2").classList.add("step_after_success");
-          setTimeout(() => {
-            this.usernameError = false;
-            this.emailError = false;
-            this.credentialInfo = false;
-            this.passwordInfo = true;
-          }, 300)
-        } else {
-          this.errorMessage = true;
-          return false;
-        }
+      if (this.registerForm.controls.username.valid && this.registerForm.controls.email.valid && this.usernameError === false && this.emailError === false) {
+        document.getElementById("step2").classList.add("step_after_success");
+        setTimeout(() => {
+          this.usernameError = false;
+          this.emailError = false;
+          this.credentialInfo = false;
+          this.passwordInfo = true;
+        }, 300)
+      } else {
+        this.errorMessage = true;
+        return false;
       }
     }
   }
@@ -133,7 +142,7 @@ export class RegisterComponent implements OnInit {
       this.customerService.addCustomer(this.registerForm.value).subscribe((data) => {
         this.customer = data['customer'];
         console.log(this.customer);
-        localStorage.setItem('registrationData', JSON.stringify(this.customer));
+        localStorage.setItem('temporaryUserData', JSON.stringify(this.customer));
         this.router.navigate(['/']);
       });
     }

@@ -1,5 +1,5 @@
-<app-navbar></app-navbar>
-<app-sidebar></app-sidebar>
+<app-navbar [basketProductsCount]="basketLength"></app-navbar>
+<app-sidebar [basketProductsCount]="basketLength"></app-sidebar>
 
 <div class="product_section" *ngIf="basketProducts.length >= 1">
     <div class="product_cards_container">
@@ -22,7 +22,7 @@
                     <span>/-</span>
                 </div>
                 <div class="text-center">
-                    <button class="product_card__btn">
+                    <button class="product_card__btn" (click)="buy(product)">
                         <span>Order Now</span>
                     </button>
                     <button class="product_card__btn_secondary" (click)="deleteBasketProduct(product)">

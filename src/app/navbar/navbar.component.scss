@@ -116,6 +116,7 @@ $color: (
       }
 
       &_items {
+        position: relative;
         display: flex;
         align-items: center;
         padding: 8px 16px;
@@ -140,6 +141,26 @@ $color: (
           font-size: 15px;
           color: #c70039;
           margin-left: 4px;
+        }
+
+        &_badge {
+          position: absolute;
+          top: 4px;
+          right: 4px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          height: 20px;
+          width: 20px;
+          background-color: #c70039;
+          box-shadow: 1px 3px 8px #cecece;
+
+          &-text {
+            color: #fff;
+            font-weight: bold;
+            font-size: 11px;
+          }
         }
       }
     }

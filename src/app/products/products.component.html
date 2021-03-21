@@ -1,5 +1,5 @@
-<app-navbar></app-navbar>
-<app-sidebar></app-sidebar>
+<app-navbar [basketProductsCount]="basketLength"></app-navbar>
+<app-sidebar [basketProductsCount]="basketLength"></app-sidebar>
 <div class="product_section">
     <div class="row" style="align-items: baseline;" *ngIf="products.length > 1">
         <div class="col-lg-6 col-md-6 col-3">

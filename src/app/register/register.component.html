@@ -80,7 +80,8 @@
                             </div>
                             <div class="form-group">
                                 <label class="register__box_form_label">Username</label>
-                                <input type="text" class="form-control" formControlName="username">
+                                <input type="text" class="form-control" formControlName="username"
+                                    (focusOut)="checkCredentials('username')">
                                 <div class="register__box_form_error"
                                     *ngIf="registerFormControls.username.touched && registerFormControls.username.invalid">
                                     <div *ngIf="registerFormControls.username.errors.required">
@@ -95,7 +96,8 @@
                             </div>
                             <div class="form-group">
                                 <label class="register__box_form_label">Email</label>
-                                <input type="text" class="form-control" formControlName="email">
+                                <input type="text" class="form-control" formControlName="email"
+                                    (focusOut)="checkCredentials('email')">
                                 <div class="register__box_form_error"
                                     *ngIf="registerFormControls.email.touched && registerFormControls.email.invalid">
                                     <div *ngIf="registerFormControls.email.errors.required">
@@ -108,16 +110,14 @@
                                 <div class="register__box_form_error" *ngIf="emailError">
                                     <div>This Email is already exist.</div>
                                 </div>
-                                <div class="register__box_form_hint" *ngIf="emailError">
-                                    Have you forgot your password?
-                                </div>
                             </div>
                             <div class="register__box_form_btn_container">
                                 <div class="back_section" (click)="backStep('credential_info')">
                                     <span class="material-icons back_section-icon">keyboard_backspace</span>
                                     <span class="back_section_text">Back</span>
                                 </div>
-                                <button class="register__box_form_btn" (click)="nextStep('credential_info')">
+                                <button class="register__box_form_btn" (click)="nextStep('credential_info')"
+                                    [disabled]="usernameError && emailError">
                                     <span>Next</span>
                                 </button>
                             </div>

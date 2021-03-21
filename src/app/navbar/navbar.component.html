@@ -34,6 +34,9 @@
                     </div>
                     <div class="custom_navbar__profile_menu_items" routerLink="/my-basket"
                         routerLinkActive="link-active">
+                        <div class="custom_navbar__profile_menu_items_badge" *ngIf="basketLength > 0">
+                            <div class="custom_navbar__profile_menu_items_badge-text">{{basketLength}}</div>
+                        </div>
                         <span class="material-icons custom_navbar__profile_menu_items-icon">shopping_basket</span>
                         <span class="custom_navbar__profile_menu_items_text">My Basket</span>
                     </div>

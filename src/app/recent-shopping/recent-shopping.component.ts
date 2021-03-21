@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from '../shared/customer.service';
 import { OrderService } from '../shared/order.service';
 
 @Component({
@@ -10,8 +9,7 @@ import { OrderService } from '../shared/order.service';
 export class RecentShoppingComponent implements OnInit {
   orders = [];
 
-  constructor(private customerServise: CustomerService,
-    private orderService: OrderService) { }
+  constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
     this.getOrders();
@@ -20,7 +18,6 @@ export class RecentShoppingComponent implements OnInit {
   getOrders() {
     this.orderService.getOrders(JSON.parse(localStorage.getItem('temporaryUserData')).username).subscribe(data => {
       this.orders = data['order'];
-      console.log(this.orders);
     });
   }
 
