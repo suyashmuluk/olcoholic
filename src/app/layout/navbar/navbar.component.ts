@@ -27,7 +27,7 @@ export class NavbarComponent implements OnChanges {
   }
 
   getUserLoginData() {
-    if (localStorage.getItem('temporaryUserData')) {
+    if (JSON.parse(localStorage.getItem('temporaryUserData'))) {
       this.isLoggedin = true;
       this.username = JSON.parse(localStorage.getItem('temporaryUserData')).username;
     }

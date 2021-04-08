@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { BasketService } from '../shared/basket.service';
+import { BasketService } from '../../shared/basket.service';
 import { Router } from '@angular/router';
 
 @Component({

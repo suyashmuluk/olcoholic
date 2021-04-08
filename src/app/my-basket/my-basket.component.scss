@@ -11,14 +11,6 @@
   }
 }
 
-.product_section {
-  padding: 100px 0 0 100px;
-
-  @include for_size(phone) {
-    padding: 100px 20px 0 20px;
-  }
-}
-
 .product_cards_container {
   margin-top: 1rem;
   display: grid;

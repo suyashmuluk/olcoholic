@@ -81,7 +81,7 @@
                             <div class="form-group">
                                 <label class="register__box_form_label">Username</label>
                                 <input type="text" class="form-control" formControlName="username"
-                                    (focusOut)="checkCredentials('username')">
+                                    (focusout)="checkCredentials('username')">
                                 <div class="register__box_form_error"
                                     *ngIf="registerFormControls.username.touched && registerFormControls.username.invalid">
                                     <div *ngIf="registerFormControls.username.errors.required">
@@ -91,13 +91,14 @@
                                         Username should atleast of 5 characters
                                     </div>
                                 </div>
-                                <div class="register__box_form_error" *ngIf="usernameError">This username is already
-                                    selected</div>
+                                <div class="register__box_form_error" *ngIf="usernameError">
+                                    Username has already been selected
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="register__box_form_label">Email</label>
                                 <input type="text" class="form-control" formControlName="email"
-                                    (focusOut)="checkCredentials('email')">
+                                    (focusout)="checkCredentials('email')">
                                 <div class="register__box_form_error"
                                     *ngIf="registerFormControls.email.touched && registerFormControls.email.invalid">
                                     <div *ngIf="registerFormControls.email.errors.required">
@@ -108,7 +109,7 @@
                                     </div>
                                 </div>
                                 <div class="register__box_form_error" *ngIf="emailError">
-                                    <div>This Email is already exist.</div>
+                                    <div>Email is already exist</div>
                                 </div>
                             </div>
                             <div class="register__box_form_btn_container">
@@ -117,7 +118,8 @@
                                     <span class="back_section_text">Back</span>
                                 </div>
                                 <button class="register__box_form_btn" (click)="nextStep('credential_info')"
-                                    [disabled]="usernameError && emailError">
+                                    [disabled]="usernameError || emailError"
+                                    [ngClass]="usernameError || emailError ? 'disabled_state__btn' : ''">
                                     <span>Next</span>
                                 </button>
                             </div>

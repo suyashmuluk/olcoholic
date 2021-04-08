@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class=hero_container>
-    <div class="landing_page" id="landing_page">
+    <div class="landing_page">
         <div class="landing_page__title_container">
             <div class="landing_page__title">Yes,</div>
             <div class="landing_page__title">We serve liquor online...</div>
@@ -12,7 +12,8 @@
     </div>
 
     <div class="body_container">
-        <div class="product_section">
+        <div>
+            <div class="product_section__header">We provide</div>
             <div class="product_cards_container">
                 <div class="product_card" *ngFor="let product of products | slice: 0:8">
                     <div class="product_card__wishlist" matTooltip="Add to Wishlist">
@@ -42,7 +43,7 @@
                     </div>
                 </div>
             </div>
-
+            <div class="product_section__subheader">..and many more</div>
             <div class="product_section_btn_container">
                 <button class="product_section-view_all_btn" routerLink="/products">
                     <span class="product_section-view_all_btn_text">View All</span>
@@ -82,6 +83,7 @@
             </div>
         </div>
     </div>
+
     <div class="contact_section">
         <div class="contact_section_info">
             <div class="contact_section_info_title">

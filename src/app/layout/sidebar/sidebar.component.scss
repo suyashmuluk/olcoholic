@@ -73,22 +73,17 @@
 
   &_list {
     margin-top: 8px;
-    padding: 8px;
+    position: relative;
+    height: calc(100% - 92px);
 
     &_item {
       position: relative;
-      padding: 8px 0 8px 15px;
+      padding: 8px 0 8px 24px;
       border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
       border-bottom: 1px solid #f7f7f7;
-
-      &:last-child {
-        position: absolute;
-        bottom: 0px;
-        width: 100%;
-      }
 
       &:hover {
         cursor: pointer;
@@ -128,6 +123,18 @@
           font-size: 11px;
         }
       }
+    }
+
+    &_item-last {
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+      background: rgb(255, 199, 215);
+      background: linear-gradient(
+        297deg,
+        rgba(255, 199, 215, 1) 38%,
+        rgba(255, 160, 171, 1) 100%
+      );
     }
   }
 }

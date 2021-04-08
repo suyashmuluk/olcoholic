@@ -1,63 +1,53 @@
 <app-navbar [basketProductsCount]="basketLength"></app-navbar>
 <app-sidebar [basketProductsCount]="basketLength"></app-sidebar>
-<div class="product_section">
-    <div class="row" style="align-items: baseline;" *ngIf="products.length > 1">
-        <div class="col-lg-6 col-md-6 col-3">
-            <div class="filter_box" (click)="toggleFilterBox()">
-                <span class="filter_box_text">Filter</span>
-                <span class="material-icons filter_box-icon">filter_alt</span>
-                <div class="filter_box_options" *ngIf="filterBox">
-                    <div class="filter_box_options_group">
-                        <div class="filter_box_options_title">
-                            Price:
-                        </div>
-                        <div class="filter_box_options_list">
-                            Low to High
-                        </div>
-                        <div class="filter_box_options_list">
-                            High to Low
-                        </div>
+<div class="product_section" *ngIf="products.length !== 0">
+    <div style="display:flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+        <div class="filter_box" (click)="toggleFilterBox()">
+            <span class="filter_box_text">Filter</span>
+            <span class="material-icons filter_box-icon">filter_alt</span>
+            <div class="filter_box_options" *ngIf="filterBox">
+                <div class="filter_box_options_group">
+                    <div class="filter_box_options_title">
+                        Price:
                     </div>
-                    <div class="filter_box_options_group">
-                        <div class="filter_box_options_title">
-                            Range:
-                        </div>
-                        <div class="filter_box_options_list">
-                            Rs. 100 - 300
-                        </div>
-                        <div class="filter_box_options_list">
-                            Rs. 300 - 700
-                        </div>
-                        <div class="filter_box_options_list">
-                            Rs. 700 - 1000
-                        </div>
-                        <div class="filter_box_options_list">
-                            Rs. 1000 - 1500
-                        </div>
+                    <div class="filter_box_options_list">
+                        Low to High
+                    </div>
+                    <div class="filter_box_options_list">
+                        High to Low
+                    </div>
+                </div>
+                <div class="filter_box_options_group">
+                    <div class="filter_box_options_title">
+                        Range:
+                    </div>
+                    <div class="filter_box_options_list">
+                        Rs. 100 - 300
+                    </div>
+                    <div class="filter_box_options_list">
+                        Rs. 300 - 700
+                    </div>
+                    <div class="filter_box_options_list">
+                        Rs. 700 - 1000
+                    </div>
+                    <div class="filter_box_options_list">
+                        Rs. 1000 - 1500
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-9">
-            <div class="search_bar">
-                <form>
-                    <!-- <mat-form-field class="search_bar_input" appearance="outline">
-                        <input type="text" matInput placeholder="Search your product" [(ngModel)]="productSearch"
-                            [ngModelOptions]="{standalone: true}">
-                        <mat-icon matSuffix>search</mat-icon>
-                    </mat-form-field> -->
-
-                    <div class="form-group" style="position: relative">
-                        <input class="form-control search_bar_input" type="text" [(ngModel)]="productSearch"
-                            [ngModelOptions]="{standalone: true}" placeholder="Search by product name">
-                        <span class="material-icons search_bar-icon">search</span>
-                    </div>
-                </form>
-            </div>
+        <div class="search_bar">
+            <form>
+                <div class="form-group" style="position: relative">
+                    <input class="form-control search_bar_input" type="text" [(ngModel)]="productSearch"
+                        [ngModelOptions]="{standalone: true}" placeholder="Search by product name">
+                    <span class="material-icons search_bar-icon">search</span>
+                </div>
+            </form>
         </div>
     </div>
 
-    <div class="product_cards_container" *ngIf="products.length >= 1">
+    <div class="product_cards_container">
         <div class="product_card" *ngFor="let product of products | filter: productSearch">
             <div class="product_card__wishlist" matTooltip="Add to Wishlist">
                 <span class="material-icons product_card__wishlist-icon">favorite</span>
@@ -88,9 +78,24 @@
             </div>
         </div>
     </div>
-    <div class="not_found_section" *ngIf="products.length < 1">
-        <div class="not_found_section_img"></div>
-        <div class="not_found_section_text">No Product Found</div>
-    </div>
+</div>
 
+<div class="product_section" *ngIf="products.length !== 0 && loader">
+    <div class="product_cards_container">
+        <div class="loader_card">
+            <div class="loader_card__image"></div>
+            <div class="product_card__desc">
+                <div class="loader_card__title"></div>
+                <div class="loader_card__info"></div>
+                <div class="loader_card__price"></div>
+                <div class="loader_card__btn"></div>
+                <div class="loader_card__link"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="not_found_section" *ngIf="products.length === 0">
+    <div class="not_found_section_img"></div>
+    <div class="not_found_section_text">No Product Found</div>
 </div>

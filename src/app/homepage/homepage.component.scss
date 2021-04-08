@@ -93,6 +93,20 @@
 }
 
 .product_section {
+  &__header {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 3rem 0;
+    font-weight: 800;
+  }
+
+  &__subheader {
+    text-align: center;
+    font-size: 2rem;
+    margin: 2rem 0;
+    font-weight: 800;
+  }
+
   &_btn_container {
     text-align: center;
   }

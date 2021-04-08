@@ -65,7 +65,7 @@
             <span class="sidebar_list_item_text" *ngIf="sidebarListItems">My Profile</span>
         </div>
 
-        <div class="sidebar_list_item" *ngIf="isLoggedin" (click)="logOut()">
+        <div class="sidebar_list_item sidebar_list_item-last" *ngIf="isLoggedin" (click)="logOut()">
             <span class="material-icons">power_settings_new</span>
             <span class="sidebar_list_item_text" *ngIf="sidebarListItems">Log out</span>
         </div>

@@ -19,6 +19,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { LayoutModule } from './layout/layout.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,15 +28,12 @@ import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ContactComponent } from './contact/contact.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
 import { ProductsComponent } from './products/products.component';
 import { BuyComponent } from './buy/buy.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { RecentShoppingComponent } from './recent-shopping/recent-shopping.component';
 import { MyBasketComponent } from './my-basket/my-basket.component';
 import { FavoritesComponent } from './favorites/favorites.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
@@ -46,15 +44,12 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     RegisterComponent,
     ContactComponent,
-    NavbarComponent,
-    FooterComponent,
     ProductsComponent,
     BuyComponent,
     DialogComponent,
     RecentShoppingComponent,
     MyBasketComponent,
     FavoritesComponent,
-    SidebarComponent,
     ProfileComponent,
     FilterPipe
   ],
@@ -83,7 +78,8 @@ import { ProfileComponent } from './profile/profile.component';
     MatTooltipModule,
     HttpClientModule,
     Ng2SearchPipeModule,
-    NgxMatIntlTelInputModule
+    NgxMatIntlTelInputModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

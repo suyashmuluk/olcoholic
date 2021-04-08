@@ -11,14 +11,6 @@
   }
 }
 
-.product_section {
-  padding: 100px 0 0 100px;
-
-  @include for_size(phone) {
-    padding: 100px 20px 0 20px;
-  }
-}
-
 .filter_box {
   position: relative;
   display: inline-flex;
@@ -102,17 +94,8 @@
   }
 
   &_input {
-    width: 50%;
-    margin-left: auto;
+    width: 250px;
     border-radius: 30px;
-
-    @include for_size(ipad) {
-      width: 70%;
-    }
-
-    @include for_size(phone) {
-      width: 100%;
-    }
   }
 
   &-icon {

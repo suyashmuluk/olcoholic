@@ -17,6 +17,7 @@ export class ProductsComponent implements OnInit {
   custId: string;
   filterBox = false;
   basketLength: number;
+  loader = false;
 
   constructor(private getProduct: GetproductsService, private router: Router, private snackBar: MatSnackBar, private basketService: BasketService) { }
 
@@ -26,8 +27,10 @@ export class ProductsComponent implements OnInit {
   }
 
   getproductList() {
+    this.loader = true;
     this.getProduct.getProducts().subscribe(data => {
       this.products = data['product'];
+      this.loader = false;
     });
   }
 

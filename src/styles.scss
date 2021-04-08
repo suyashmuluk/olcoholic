@@ -3,11 +3,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 body {
   font-family: "Lato", sans-serif;
+  scroll-behavior: smooth;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
   color: #141414;
+}
+
+@mixin for_size($size) {
+  @if $size == phone {
+    @media only screen and (max-width: 767px) and (min-width: 320px) {
+      @content;
+    }
+  }
+  @if $size == ipad {
+    @media only screen and (max-width: 991px) and (min-width: 768px) {
+      @content;
+    }
+  }
+}
+
+.product_section,
+.not_found_section {
+  padding: 100px 20px 0 100px;
+
+  @include for_size(phone) {
+    padding: 100px 20px 0 20px;
+  }
 }
 
 .form-group {
@@ -37,4 +60,70 @@ body {
 .has-error input {
   border: 2px solid #e74c3c;
   color: #e74c3c;
+}
+
+.disabled_state__btn {
+  background-color: #cccccc !important;
+  color: #666666 !important;
+}
+
+div,
+button:focus {
+  outline: 0;
+}
+
+.loader_card {
+  box-shadow: 1px 1px 3px #cecece;
+  border-radius: 4px;
+  width: 97%;
+  max-width: 302px;
+  position: relative;
+  margin: 0 auto 1rem;
+  transition: all 0.3s ease-in;
+
+  @include for_size(phone) {
+    max-width: none;
+  }
+
+  &__image {
+    height: 280px;
+    width: 100%;
+    background-color: #cecece;
+  }
+  &__title {
+    margin-top: 0.5rem;
+    height: 25px;
+    width: 150px;
+    background-color: #cecece;
+  }
+
+  &__info {
+    height: 18px;
+    width: 200px;
+    background-color: #cecece;
+    margin-top: 8px;
+  }
+
+  &__price {
+    height: 18px;
+    width: 75px;
+    margin-top: 0.5rem;
+    background-color: #cecece;
+  }
+
+  &__btn {
+    width: 90%;
+    margin: 1rem auto 0;
+    box-shadow: 1px 1px 3px #a2a2a2;
+    border-radius: 5px;
+    height: 40px;
+    background-color: #cecece;
+  }
+
+  &__link {
+    width: 140px;
+    height: 24px;
+    margin: 0.5rem auto 0;
+    background-color: #cecece;
+  }
 }

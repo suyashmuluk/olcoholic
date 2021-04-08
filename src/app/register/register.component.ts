@@ -81,14 +81,14 @@ export class RegisterComponent implements OnInit {
       if (value === 'username') {
         if (this.registerForm.value.username === customer['username']) {
           this.usernameError = true;
-          this.credentialInfo = true;
-          this.passwordInfo = false;
+        } else {
+          this.usernameError = false;
         }
       } else if (value === 'email') {
         if (this.registerForm.value.email === customer['email']) {
           this.emailError = true;
-          this.credentialInfo = true;
-          this.passwordInfo = false;
+        } else {
+          this.emailError = false;
         }
       }
     }
